@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Meine Quiz – Deutsch lernen</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet"><style>
+:root{--tx:#3b3355;--mu:#7a7396;--bd:#ffe0b0;--g:#34c759;--gd:#22a447;--o:#ff8a3d;--gl:#d9fbd2;--rl:#ffdadd;--bl:#e3f4ff;--r:#ff5a6e;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;min-height:100%;color:var(--tx);font:17px/1.5 "Fredoka","Baloo 2",ui-rounded,"Comic Sans MS",system-ui,sans-serif;background:linear-gradient(#8fd8ff 0,#c9f0ff 240px,#fff4c9 560px,#d9f7b2 100%) fixed}
+body::before{content:"";position:fixed;left:0;right:0;bottom:0;height:110px;background:radial-gradient(130px 60px at 15% 100%,#7bd66a 98%,transparent),radial-gradient(170px 70px at 55% 100%,#5cc95a 98%,transparent),radial-gradient(140px 55px at 92% 100%,#8ee07c 98%,transparent);pointer-events:none;z-index:0}
+#app{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:62px 16px 130px}
+h1{font-size:27px;margin:8px 0 4px;line-height:1.2}h2{font-size:21px;line-height:1.3}h3{margin:16px 0 4px}.c{text-align:center}
+.sub{color:var(--mu);margin:0 0 12px}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card{background:#fff;border:3px solid var(--bd);border-bottom-width:6px;border-radius:22px;padding:14px;margin:12px 0}
+.tc{display:flex;gap:14px;align-items:center;width:100%;text-align:left}
+.em{font-size:38px}
+.btn{background:linear-gradient(#ffa24a,var(--o));color:#fff;border:0;border-bottom:5px solid #d8661a;border-radius:18px;padding:13px;width:100%;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-size:17px}
+.btn:active{transform:translateY(2px)}
+.btn:disabled{background:#e4dfee;border-color:#bdb6cc;color:#9a93ad;cursor:default}
+.lnk{background:none;border:0;color:#4a7bd8;text-decoration:underline;padding:6px;font-size:15px}
+.x{border:0;background:#fff;border-radius:16px;padding:6px 14px;font-weight:700;box-shadow:0 3px 0 rgba(0,0,0,.1)}
+.hero{text-align:center;padding:4px 0}.hc svg{width:150px;height:auto;animation:bob 2.6s ease-in-out infinite}
+.hero h1{font-size:30px;color:#fff;text-shadow:0 3px 0 #ff8a3d,0 5px 8px rgba(0,0,0,.2)}
+.lvc{display:block;width:100%;text-align:left;border:0;border-radius:28px;margin:14px 0;padding:0;overflow:hidden;background:#fff;border-bottom:7px solid rgba(0,0,0,.15);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.isl{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:18px 12px;font-size:36px}
+.A1 .isl{background:linear-gradient(135deg,#9be37d,#7fd6ff)}.A2 .isl{background:linear-gradient(135deg,#ffd36b,#ff9fb0)}
+.isl span{animation:bob 2.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes bob{50%{transform:translateY(-7px)}}
+.lvt{padding:10px 18px 14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.lvt b{font-size:36px;color:var(--o)}.lvt small{color:var(--mu);width:100%}
+.map-card{display:flex;gap:14px;align-items:center;width:100%;text-align:left;border:0;border-radius:24px;padding:14px;margin:10px 0 14px;background:linear-gradient(135deg,#7fd6ff,#9be37d);border-bottom:6px solid rgba(0,0,0,.15);font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{border:0;border-radius:22px;padding:14px 8px;text-align:center;color:#fff;font-weight:700;border-bottom:6px solid rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;gap:2px}
+.tile:active{transform:scale(.96)}.tile .em{font-size:44px}.tile small{opacity:.92;font-weight:500}
+.c0{background:#ff7a8a}.c1{background:#ffa23e}.c2{background:#2ec4b6}.c3{background:#6c8cff}.c4{background:#a66cff}.c5{background:#4cc35a}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:12px 0;padding-bottom:4px}
+.tabs button{border:3px solid #fff;background:#fff;border-radius:20px;padding:6px 14px;white-space:nowrap;font-weight:600}
+.tabs .on{background:var(--o);color:#fff}
+.w{display:flex;align-items:center;gap:12px}.w b,.w small{display:block}.w small{color:var(--mu)}
+.sp{margin-left:auto;border:0;background:var(--bl);border-radius:50%;width:40px;height:40px;font-size:18px;flex:none}
+.st{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.bar{flex:1;height:16px;background:#fff;border-radius:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#34c759,#9be37d);border-radius:10px;transition:width .3s}
+.tm{height:12px;background:#fff;border-radius:8px;overflow:hidden;margin:0 0 14px}
+.tm i{display:block;height:100%;background:linear-gradient(90deg,#ffd93d,#ff9f43);transition:width .2s linear}.tm i.lo{background:var(--r)}
+.o{display:block;width:100%;text-align:left;background:#fff;border:3px solid var(--bd);border-bottom-width:6px;border-radius:18px;padding:12px 14px;margin:9px 0}
+.o.on,.gr .on{background:var(--bl);border-color:#4aa8ff}
+.big{font-size:60px;text-align:center}
+.gr{display:flex;align-items:center;gap:8px;margin:8px 0;flex-wrap:wrap;background:#fff;border-radius:16px;padding:8px 10px}
+.gr b{min-width:90px}.gr button{border:3px solid var(--bd);background:#fff;border-radius:12px;padding:5px 10px}
+.ok{background:var(--gl);border-color:var(--g)}.no{background:var(--rl);border-color:var(--r)}
+.fb{margin-top:16px;padding:14px;border-radius:18px}
+.trn{background:#fff;border-radius:12px;padding:8px 12px;text-align:center;font-weight:600}
+input{font:inherit;width:100%;box-sizing:border-box;padding:12px;border:3px solid var(--bd);border-radius:16px;background:#fff;color:inherit}
+.ex{background:var(--bl);border-radius:12px;padding:8px 12px;margin:6px 0}
+.wm{position:relative;height:430px;border-radius:26px;overflow:hidden;border:5px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.15);background:radial-gradient(circle at 15% 85%,#7fd6ff 0 27%,transparent 28%),radial-gradient(circle at 42% 22%,#9be37d 0 22%,transparent 23%),radial-gradient(circle at 66% 76%,#7ad9a0 0 20%,transparent 21%),radial-gradient(circle at 86% 20%,#cdb9ff 0 19%,transparent 20%),#ffeeb0}
+.wm svg{position:absolute;inset:0;width:100%;height:100%}
+.nd{position:absolute;transform:translate(-50%,-50%);width:112px;text-align:center;background:none;border:0;padding:0;line-height:1.15}
+.nd .sc{display:block;width:64px;height:64px;line-height:64px;margin:0 auto 2px;border-radius:50%;background:#fff;font-size:34px;border:4px solid var(--o);box-shadow:0 4px 0 rgba(0,0,0,.18);animation:bob 2.2s ease-in-out infinite}
+.nd b{display:block;font-size:13px;text-shadow:0 1px 0 #fff}.nd small{display:inline-block;background:#fff;border-radius:10px;padding:0 8px;font-size:12px}
+.nd.dn .sc{border-color:var(--g)}.nd.lk{filter:grayscale(1);opacity:.75}.nd.lk .sc{animation:none}
+#mt{position:fixed;right:12px;top:calc(env(safe-area-inset-top,0px) + 10px);width:46px;height:46px;border-radius:50%;border:3px solid #fff;background:#ffd93d;font-size:21px;padding:0;z-index:9;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+#cat{position:fixed;left:4px;bottom:calc(env(safe-area-inset-bottom,0px) + 2px);width:92px;z-index:8;cursor:pointer}
+#cat svg{width:100%;height:auto;display:block}
+#cat.jump{animation:jump .5s 3}#cat.shake{animation:shake .35s 2}
+@keyframes jump{50%{transform:translateY(-38px) rotate(-8deg)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#bub{position:absolute;left:52%;bottom:96px;background:#fff;border:3px solid #ffb347;border-radius:16px;padding:3px 12px;font-weight:700;font-size:15px;white-space:nowrap;display:none}
+#bub.show{display:block}
+.arm{transform:rotate(-15deg);transform-origin:87px 98px;animation:wave 1.3s ease-in-out infinite}
+@keyframes wave{50%{transform:rotate(-50deg)}}
+.cf{position:fixed;top:-14px;height:12px;z-index:20;pointer-events:none;border-radius:2px;animation:fall 1.8s linear forwards}
+@keyframes fall{to{transform:translateY(108vh) rotate(720deg)}}
+.hc svg{width:175px}
+.arm{transform-origin:96px 108px}
+.ex1,.ex2,.mo1,.mo2{display:none}.happy .ex0,.happy .mo0,.sad .ex0,.sad .mo0{display:none}.happy .ex1,.happy .mo1,.sad .ex2,.sad .mo2{display:inline}
+#cat{width:104px}#bub{left:60%;bottom:104px}
+.isl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;padding:16px 10px;font-size:inherit}
+.A2 .isl{grid-template-columns:repeat(3,1fr)}
+.isl .ic{display:flex;flex-direction:column;align-items:center;animation:bob 2.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.ic svg{width:48px;height:48px;filter:drop-shadow(0 3px 0 rgba(0,0,0,.15))}
+.ic small{font-size:11px;font-weight:700;color:#3b3355;text-align:center;line-height:1.1;margin-top:3px;background:rgba(255,255,255,.8);border-radius:8px;padding:1px 6px}
+.ic2 svg{width:56px;height:56px;filter:drop-shadow(0 3px 0 rgba(0,0,0,.15))}.map-card .ic2 svg{width:46px;height:46px}
+select{font:inherit;width:100%;padding:10px;border:3px solid var(--bd);border-radius:14px;background:#fff}
+.wm{position:relative;width:100%;height:auto;aspect-ratio:400/560;border-radius:28px;overflow:hidden;border:5px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.18);background:#5cc9f2}
+.wm svg{position:absolute;left:0;top:0;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-50%);width:42%;height:21%;background:none;border:0;padding:0;display:flex;align-items:flex-end;justify-content:center}
+.pin.off{cursor:default}
+.lbl{display:block;background:#fff;border:3px solid var(--o);border-radius:14px;padding:1px 8px;margin-bottom:-18px;max-width:100%;text-align:center;line-height:1.15;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.pin.off .lbl{border-color:#b9b3cc}
+.lbl b{display:block;font-size:12.5px;text-shadow:none}.lbl small{display:block;font-size:11px;color:var(--mu)}
+.pulse{animation:pls 1.4s ease-in-out infinite}@keyframes pls{50%{opacity:.3}}
+.hc2 svg{width:230px;display:block;margin:0 auto}
+</style></head><body><div id="app"></div><script>
+/* ===== DATA: EDIT HERE =====
+Tiap tema: w=Wortschatz [Jerman, Indonesia, emoji] · r=Redemittel [Jerman, Indonesia] · d=Dialog [pembicara, kalimat]
+g=Grammatik {h:judul, p:penjelasan (boleh HTML), x:[contoh]}
+quiz: jenis soal
+ {t:'mc',q,img,o:[pilihan],a:indeks benar,why}        pilihan ganda
+ {t:'tf',q,a:true/false,why}                          Richtig/Falsch
+ {t:'hear',say:'teks yang diucapkan',audio:'url mp3 (opsional)',q,o,a,why}  Hören
+ {t:'group',q,c:[kategori],it:[[kata,indeks kategori]],why}  mengelompokkan
+ {t:'type',q,a:['jawaban benar',...],why}             isian
+Suara memakai suara Jerman bawaan browser; isi "audio" kalau punya file mp3 sendiri. */
+const DATA=[
+{title:'Kennenlernen',emoji:'🤝',auto:1,cats:['Information 📋','Verb 🏃'],
+w:[['der Name','nama','🏷️',0],['das Alter','usia','🎂',0],['das Land','negara','🌍',0],['die Sprache','bahasa','🗣️',0],['die Adresse','alamat','🏠',0],['die Telefonnummer','nomor telepon','📱',0],['der Geburtstag','hari ulang tahun','🎉',0],['die Stadt','kota','🏙️',0],['heißen','bernama','👋',1],['kommen','datang / berasal','🧳',1],['wohnen','tinggal','🏡',1],['sprechen','berbicara','💬',1]],
+r:[['Wie heißt du? – Ich heiße Mia.','Siapa namamu? – Namaku Mia.'],['Woher kommst du? – Ich komme aus Indonesien.','Kamu dari mana? – Saya dari Indonesia.'],['Wo wohnst du? – Ich wohne in Surabaya.','Kamu tinggal di mana? – Saya tinggal di Surabaya.'],['Wie alt bist du? – Ich bin 20 Jahre alt.','Berapa usiamu? – 20 tahun.'],['Welche Sprachen sprichst du?','Kamu berbicara bahasa apa saja?']],
+d:[['Mia','Hallo! Wie heißt du?'],['Ali','Ich heiße Ali. Und du?'],['Mia','Ich bin Mia. Woher kommst du?'],['Ali','Ich komme aus Indonesien.']],
+g:{h:'W-Fragen & Verbkonjugation',p:'Kata tanya: <b>Wie? Wo? Woher? Wer?</b> Kata kerja ada di <b>posisi 2</b>. Akhiran: ich <b>-e</b>, du <b>-st</b>, er/sie <b>-t</b>.',x:['ich komm<b>e</b> aus Indonesien','du komm<b>st</b> aus Spanien','er komm<b>t</b> aus Deutschland']},
+quiz:[
+{t:'hear',say:'Ich komme aus Indonesien.',q:'Woher kommt die Person?',o:['aus Indonesien','aus Deutschland','aus Spanien'],a:0,why:'Indonesien = Indonesia.'},
+{t:'mc',q:'Wie fragt man nach dem Namen?',o:['Wie heißt du?','Wo wohnst du?','Wie alt bist du?'],a:0,why:'Wie heißt du? = Siapa namamu?'},
+{t:'type',q:'Du ___ aus Spanien. (kommen)',a:['kommst'],why:'du → komm<b>st</b>.'},
+{t:'tf',q:'„Woher kommst du?“ fragt nach dem Wohnort.',a:false,why:'Woher = asal. Wohnort = Wo wohnst du?'},
+{t:'mc',q:'Wo ___ du?',o:['wohnst','wohne','wohnt'],a:0,why:'du → wohn<b>st</b>.'}]},
+{title:'Familie',emoji:'👨‍👩‍👧',auto:1,cats:['weiblich 👩','männlich 👨'],
+w:[['die Mutter','ibu','👩',0],['die Schwester','saudari perempuan','👧',0],['die Oma','nenek','👵',0],['die Tante','bibi / tante','👩‍🦰',0],['die Tochter','anak perempuan','👧',0],['der Vater','ayah','👨',1],['der Bruder','saudara laki-laki','👦',1],['der Opa','kakek','👴',1],['der Onkel','paman','🧔',1],['der Sohn','anak laki-laki','👦',1],['die Eltern','orang tua','👨‍👩‍👧'],['die Geschwister','saudara kandung','👫']],
+r:[['Das ist meine Familie.','Ini keluargaku.'],['Ich habe einen Bruder und eine Schwester.','Saya punya seorang saudara laki-laki dan seorang saudari.'],['Hast du Geschwister?','Kamu punya saudara kandung?'],['Meine Mutter heißt Siti.','Ibuku bernama Siti.']],
+d:[['Lena','Hast du Geschwister?'],['Tom','Ja, ich habe einen Bruder.'],['Lena','Wie heißt er?'],['Tom','Er heißt Max.']],
+g:{h:'Possessivartikel: mein / meine',p:'<b>mein</b> untuk der- dan das-kata benda, <b>meine</b> untuk die-kata benda dan jamak.',x:['<b>mein</b> Vater, <b>mein</b> Bruder','<b>meine</b> Mutter, <b>meine</b> Schwester','<b>meine</b> Eltern (jamak)']},
+quiz:[
+{t:'hear',say:'Das ist meine Mutter.',q:'Wer ist das?',o:['die Mutter','der Vater','die Tante'],a:0,why:'die Mutter = ibu.'},
+{t:'mc',q:'___ Bruder heißt Max.',o:['Mein','Meine'],a:0,why:'der Bruder → <b>mein</b>.'},
+{t:'type',q:'___ Schwester heißt Anna. (mein / meine)',a:['meine'],why:'die Schwester → <b>meine</b>.'},
+{t:'tf',q:'„meine Vater“ ist richtig.',a:false,why:'Yang benar: <b>mein</b> Vater.'},
+{t:'mc',q:'Ich habe ___ Schwester.',o:['eine','einen','ein'],a:0,why:'die Schwester → <b>eine</b>.'}]},
+{title:'Zahlen',emoji:'🔢',auto:1,cats:['gerade 2️⃣','ungerade 1️⃣'],
+w:[['eins','1','1️⃣',1],['zwei','2','2️⃣',0],['drei','3','3️⃣',1],['vier','4','4️⃣',0],['fünf','5','5️⃣',1],['sechs','6','6️⃣',0],['sieben','7','7️⃣',1],['acht','8','8️⃣',0],['neun','9','9️⃣',1],['zehn','10','🔟',0],['elf','11','🕚',1],['zwölf','12','🕛',0]],
+r:[['Wie viel kostet das? – Fünf Euro.','Berapa harganya? – Lima euro.'],['Meine Telefonnummer ist …','Nomor teleponku …'],['Ich bin zwanzig Jahre alt.','Usia saya dua puluh tahun.']],
+d:[['Verkäufer','Das macht zehn Euro.'],['Kunde','Hier sind zwanzig Euro.'],['Verkäufer','Zehn Euro zurück. Danke!'],['Kunde','Bitte!']],
+g:{h:'Zahlen 13–100',p:'13–19 = angka + <b>zehn</b>. Puluhan: zwanzig, dreißig, vierzig … Untuk 21–99: <b>satuan + und + puluhan</b> (dibalik dari bahasa Indonesia).',x:['13 = drei<b>zehn</b>','21 = <b>ein</b>und<b>zwanzig</b>','45 = <b>fünf</b>und<b>vierzig</b>']},
+quiz:[
+{t:'hear',say:'Das macht fünfzehn Euro.',q:'Wie viel kostet es?',o:['15 €','50 €','5 €'],a:0,why:'fünfzehn = 15.'},
+{t:'mc',q:'30 =',o:['dreißig','dreizehn','dreiunddreißig'],a:0,why:'30 = dreißig; 13 = dreizehn.'},
+{t:'type',q:'21 = ___ (satu kata)',a:['einundzwanzig'],why:'ein + und + zwanzig.'},
+{t:'tf',q:'„dreizehn“ ist 30.',a:false,why:'dreizehn = 13.'},
+{t:'mc',q:'45 =',o:['fünfundvierzig','vierundfünfzig','vierzigfünf'],a:0,why:'5 + und + 40 → fünfundvierzig.'}]},
+{title:'Schule',emoji:'🏫',
+w:[['die Schule','sekolah','🏫'],['der Lehrer / die Lehrerin','guru','👩‍🏫'],['der Schüler','siswa','🧒'],['das Buch','buku','📖'],['das Heft','buku tulis','📓'],['der Stift','pulpen / pensil','✏️'],['die Tafel','papan tulis','📋'],['die Tasche','tas','🎒']],
+r:[['Wie heißt du? – Ich heiße Ali.','Siapa namamu? – Namaku Ali.'],['Kannst du das wiederholen?','Bisa kamu ulangi?'],['Ich verstehe das nicht.','Saya tidak mengerti.'],['Wie sagt man … auf Deutsch?','Bagaimana mengatakan … dalam bahasa Jerman?'],['Darf ich bitte rausgehen?','Boleh saya keluar?']],
+d:[['Lehrerin','Guten Morgen! Wie heißt du?'],['Schüler','Guten Morgen! Ich heiße Ali.'],['Lehrerin','Hast du ein Heft?'],['Schüler','Ja, ich habe ein Heft und einen Stift.']],
+g:{h:'Artikel & Akkusativ',p:'Kata benda Jerman punya artikel <b>der / die / das</b>. Setelah <b>haben</b>, benda maskulin berubah: <b>ein → einen</b>. Feminin (eine) dan netral (ein) tetap.',x:['der Stift → Ich habe <b>einen</b> Stift.','die Tasche → Ich habe <b>eine</b> Tasche.','das Buch → Ich habe <b>ein</b> Buch.']},
+quiz:[{t:'hear',say:'Ich habe ein Heft.',q:'Was hörst du?',o:['Ich habe ein Heft.','Ich habe eine Hand.','Ich habe ein Haus.'],a:0,why:'Ich habe ein Heft. = Saya punya buku tulis.'},
+{t:'hear',say:'Guten Morgen! Wie heißt du?',q:'Welche Antwort passt?',o:['Ich heiße Ali.','Ich habe ein Buch.','Es ist acht Uhr.'],a:0,why:'„Wie heißt du?“ dijawab „Ich heiße …“.'},
+{t:'hear',say:'Die Lehrerin schreibt an die Tafel.',q:'Was macht die Lehrerin?',o:['schreiben','lesen','essen'],a:0,why:'schreiben = menulis.'},
+{t:'hear',say:'Mein Stift ist rot.',q:'Welche Farbe hat der Stift?',o:['rot','blau','grün'],a:0,why:'rot = merah.'},
+{t:'hear',say:'Die Tasche ist auf dem Stuhl.',q:'Wo ist die Tasche?',o:['auf dem Stuhl','auf dem Tisch','unter dem Bett'],a:0,why:'der Stuhl = kursi.'},
+{t:'hear',say:'Wir haben um zehn Uhr Pause.',q:'Wann ist Pause?',o:['um 10 Uhr','um 9 Uhr','um 12 Uhr'],a:0,why:'zehn Uhr = jam 10; die Pause = istirahat.'},
+{t:'hear',say:'Ich habe heute Mathe und Deutsch.',q:'Welche Fächer hat die Person?',o:['Mathe und Deutsch','Sport und Kunst','Musik und Mathe'],a:0,why:'das Fach = mata pelajaran.'},
+{t:'hear',say:'Das Buch ist auf dem Tisch.',q:'Was ist auf dem Tisch?',o:['das Buch','das Heft','die Tasche'],a:0,why:'der Tisch = meja.'},
+{t:'hear',say:'Ich verstehe das nicht.',q:'Was sagt der Schüler?',o:['Er versteht es nicht.','Er hat Hunger.','Er ist müde.'],a:0,why:'verstehen = mengerti.'},
+{t:'hear',say:'Mach bitte das Fenster auf.',q:'Was soll man aufmachen?',o:['das Fenster','die Tür','das Heft'],a:0,why:'aufmachen = membuka; das Fenster = jendela.'},
+{t:'tf',q:'„die Stift“ ist richtig.',a:false,why:'Yang benar: <b>der</b> Stift.'},
+{t:'tf',q:'Ein Lehrer arbeitet in der Schule.',a:true,why:'arbeiten = bekerja.'},
+{t:'tf',q:'„das Heft“ ist maskulin.',a:false,why:'das Heft = netral.'},
+{t:'tf',q:'Die Tafel ist ein Stift.',a:false,why:'die Tafel = papan tulis.'},
+{t:'tf',q:'„die Tasche“ hat den Artikel „die“.',a:true,why:'Betul: die Tasche.'},
+{t:'tf',q:'Die Mehrzahl von „Buch“ ist „Bücher“.',a:true,why:'Buch → Bücher (umlaut + er).'},
+{t:'tf',q:'Schüler lernen in der Schule.',a:true,why:'lernen = belajar.'},
+{t:'tf',q:'„Ich habe einen Stift.“ ist richtig.',a:true,why:'Stift maskulin → Akkusativ einen.'},
+{t:'tf',q:'„Ich habe ein Stift.“ ist richtig.',a:false,why:'Yang benar: Ich habe <b>einen</b> Stift.'},
+{t:'tf',q:'„die Schule“ bedeutet „sekolah“.',a:true,why:'die Schule = sekolah.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Lehrer',0],['Schule',1],['Buch',2],['Tasche',1],['Heft',2],['Stift',0]],why:'Hafalkan kata benda bersama artikelnya.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Tisch',0],['Tür',1],['Fenster',2],['Stuhl',0]],why:'der Tisch, die Tür, das Fenster, der Stuhl.'},
+{t:'group',q:'Schulsachen oder Möbel?',c:['Schulsachen ✏️','Möbel 🪑'],it:[['Stift',0],['Heft',0],['Tisch',1],['Stuhl',1]],why:'Möbel = perabot.'},
+{t:'group',q:'Person oder Ding?',c:['Person 🧑','Ding 📦'],it:[['Lehrer',0],['Schüler',0],['Buch',1],['Tasche',1]],why:'Lehrer & Schüler adalah orang.'},
+{t:'group',q:'Fach oder Schulsache?',c:['Fach 📚','Schulsache ✏️'],it:[['Mathe',0],['Deutsch',0],['Heft',1],['Lineal',1]],why:'Mathe & Deutsch = mata pelajaran.'},
+{t:'group',q:'Singular oder Plural?',c:['Singular','Plural'],it:[['Bücher',1],['Heft',0],['Hefte',1],['Tasche',0]],why:'Plural: Buch → Bücher, Heft → Hefte.'},
+{t:'group',q:'Nomen oder Verb?',c:['Nomen','Verb'],it:[['lernen',1],['Schule',0],['lesen',1],['Lehrer',0]],why:'Kata benda diawali huruf besar.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Buch',2],['Lehrerin',1],['Schüler',0],['Klassenzimmer',2]],why:'das Buch, die Lehrerin, der Schüler, das Klassenzimmer.'},
+{t:'group',q:'Wo ist das?',c:['in der Schule 🏫','zu Hause 🏠'],it:[['Tafel',0],['Lehrer',0],['Bett',1],['Hausaufgabe',1]],why:'Tafel & Lehrer ada di sekolah.'},
+{t:'group',q:'Frage oder Antwort?',c:['Frage ❓','Antwort ✅'],it:[['Wie heißt du?',0],['Ich heiße Ali.',1],['Hast du ein Heft?',0],['Ja, ich habe ein Heft.',1]],why:'Pertanyaan diakhiri tanda tanya.'},
+{t:'mc',img:'📋',q:'Was ist „die Tafel“?',o:['papan tulis','buku','tas'],a:0,why:'die Tafel = papan tulis.'},
+{t:'type',q:'Ich habe ___ Stift. (ein / einen)',a:['einen'],why:'Stift maskulin → Akkusativ: <b>einen</b>.'},
+{t:'mc',q:'Wie fragt man: „Bisa kamu ulangi?“',o:['Kannst du das wiederholen?','Wie heißt du?','Wo ist die Schule?'],a:0,why:'wiederholen = mengulang.'},
+{t:'mc',q:'Was ist „der Schüler“?',o:['siswa','guru','kelas'],a:0,why:'der Schüler = siswa.'},
+{t:'mc',img:'📖',q:'Welches Wort passt?',o:['das Buch','der Stift','die Tür'],a:0,why:'das Buch = buku.'},
+{t:'type',q:'Plural: das Buch → die ___',a:['Bücher'],why:'Buch → <b>Bücher</b>.'},
+{t:'type',q:'Ich habe ___ Tasche. (ein / eine)',a:['eine'],why:'die Tasche feminin → <b>eine</b>.'},
+{t:'mc',q:'Ich habe ___ Heft.',o:['ein','eine','einen'],a:0,why:'das Heft netral → <b>ein</b>.'},
+{t:'mc',q:'Wie sagt man „Saya tidak mengerti“?',o:['Ich verstehe das nicht.','Ich heiße Ali.','Wo ist die Tafel?'],a:0,why:'verstehen = mengerti.'},
+{t:'type',q:'Ich ___ Ali. (heißen)',a:['heiße'],why:'ich → heiß<b>e</b>.'}]},
+{title:'Umwelt',emoji:'🌳',
+w:[['der Baum','pohon','🌳'],['die Blume','bunga','🌸'],['das Wasser','air','💧'],['die Luft','udara','💨'],['der Müll','sampah','🗑️'],['das Papier','kertas','📄'],['das Plastik','plastik','🧴'],['recyceln','mendaur ulang','♻️']],
+r:[['Wir müssen Müll trennen.','Kita harus memilah sampah.'],['Das ist gut für die Umwelt.','Itu baik untuk lingkungan.'],['Ich fahre mit dem Fahrrad.','Saya naik sepeda.'],['Wir sparen Wasser.','Kita menghemat air.'],['Bitte wirf den Müll in den Mülleimer.','Tolong buang sampah ke tempat sampah.']],
+d:[['Lena','Hallo Tom, wohin gehst du?'],['Tom','Ich gehe zur Schule. Ich fahre mit dem Fahrrad.'],['Lena','Super! Das ist gut für die Umwelt.'],['Tom','Ja, und ich trenne den Müll zu Hause.']],
+g:{h:'Plural (Mehrzahl)',p:'Bentuk jamak Jerman tidak selalu sama. Pola umum: <b>-e</b>, <b>-n/-en</b>, atau umlaut (a→ä). Hafalkan dengan artikelnya.',x:['der Baum → die <b>Bäume</b>','die Blume → die <b>Blumen</b>','der Fluss → die <b>Flüsse</b>']},
+quiz:[{t:'hear',say:'Ich fahre mit dem Fahrrad zur Schule.',q:'Wie fährt die Person zur Schule?',o:['mit dem Bus','mit dem Fahrrad','mit dem Auto'],a:1,why:'Fahrrad = sepeda.'},
+{t:'hear',say:'Der Baum ist groß.',q:'Was ist groß?',o:['der Baum','die Blume','das Haus'],a:0,why:'groß = besar. Der Baum ist groß.'},
+{t:'hear',say:'Wir trennen den Müll.',q:'Was machen wir?',o:['Müll trennen','Wasser trinken','Papier kaufen'],a:0,why:'Müll trennen = memilah sampah.'},
+{t:'hear',say:'Das Wasser ist sauber.',q:'Wie ist das Wasser?',o:['sauber','schmutzig','kalt'],a:0,why:'sauber = bersih.'},
+{t:'hear',say:'Ich werfe die Flasche in den Mülleimer.',q:'Wohin wirft die Person die Flasche?',o:['in den Mülleimer','in den Fluss','in die Tasche'],a:0,why:'Mülleimer = tempat sampah.'},
+{t:'hear',say:'Plastik ist schlecht für die Umwelt.',q:'Was ist schlecht für die Umwelt?',o:['Papier','Plastik','Wasser'],a:1,why:'schlecht = buruk.'},
+{t:'hear',say:'Im Wald sind viele Bäume.',q:'Wo sind viele Bäume?',o:['im Wald','im Bus','in der Schule'],a:0,why:'der Wald = hutan.'},
+{t:'hear',say:'Wir sparen Strom und Wasser.',q:'Was sparen wir?',o:['Strom und Wasser','Geld und Zeit','Papier und Plastik'],a:0,why:'sparen = menghemat; Strom = listrik.'},
+{t:'hear',say:'Ich gehe zu Fuß zur Schule.',q:'Wie kommt die Person zur Schule?',o:['zu Fuß','mit dem Auto','mit dem Bus'],a:0,why:'zu Fuß = berjalan kaki.'},
+{t:'hear',say:'Bitte mach das Licht aus.',q:'Was soll man ausmachen?',o:['das Licht','das Wasser','die Tür'],a:0,why:'das Licht = lampu; ausmachen = mematikan.'},
+{t:'tf',q:'Papier wirft man in die Papiertonne.',a:true,why:'Richtig. Kertas dibuang ke tong kertas.'},
+{t:'tf',q:'Plastik ist gut für die Umwelt.',a:false,why:'Plastik buruk untuk lingkungan.'},
+{t:'tf',q:'Bäume sind gut für die Luft.',a:true,why:'Pohon membuat udara lebih baik.'},
+{t:'tf',q:'Das Fahrrad ist gut für die Umwelt.',a:true,why:'Sepeda tidak menghasilkan gas buang.'},
+{t:'tf',q:'Man wirft Müll in den Fluss.',a:false,why:'Sampah dibuang ke Mülleimer, bukan ke sungai.'},
+{t:'tf',q:'Die Mehrzahl von „Blume“ ist „Blumes“.',a:false,why:'Yang benar: die <b>Blumen</b>.'},
+{t:'tf',q:'Wasser sparen ist wichtig.',a:true,why:'wichtig = penting.'},
+{t:'tf',q:'„der Müll“ ist feminin.',a:false,why:'der Müll = maskulin (der).'},
+{t:'tf',q:'„recyceln“ bedeutet „wegwerfen“.',a:false,why:'recyceln = mendaur ulang; wegwerfen = membuang.'},
+{t:'tf',q:'„das Papier“ hat den Artikel „das“.',a:true,why:'Betul: das Papier.'},
+{t:'group',q:'Natur oder Müll?',c:['Natur 🌳','Müll 🗑️'],it:[['Baum',0],['Blume',0],['Fluss',0],['Plastik',1],['Papier',1],['Flasche',1]],why:'Baum, Blume, Fluss = alam. Plastik, Papier, Flasche = sampah.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Baum',0],['Blume',1],['Wasser',2],['Müll',0],['Sonne',1],['Papier',2]],why:'Hafalkan kata benda bersama artikelnya.'},
+{t:'group',q:'Was ist gut für die Umwelt?',c:['umweltfreundlich 🌱','nicht so gut 🚗'],it:[['Fahrrad',0],['zu Fuß',0],['Auto',1],['Flugzeug',1]],why:'Sepeda dan jalan kaki ramah lingkungan.'},
+{t:'group',q:'Wohin gehört der Müll?',c:['Papiertonne 📄','Plastik 🧴','Glas 🍾'],it:[['Zeitung',0],['Plastiktüte',1],['Glasflasche',2],['Karton',0]],why:'Zeitung & Karton = kertas; Plastiktüte = plastik; Glasflasche = kaca.'},
+{t:'group',q:'Singular oder Plural?',c:['Singular','Plural'],it:[['Bäume',1],['Blume',0],['Blumen',1],['Fluss',0]],why:'Plural: Baum → Bäume, Blume → Blumen.'},
+{t:'group',q:'Nomen oder Verb?',c:['Nomen','Verb'],it:[['Baum',0],['trennen',1],['Müll',0],['sparen',1]],why:'Kata benda ditulis dengan huruf besar.'},
+{t:'group',q:'Wasser oder Land?',c:['Wasser 💧','Land 🌍'],it:[['Fluss',0],['Meer',0],['Wald',1],['Berg',1]],why:'Fluss = sungai, Meer = laut, Wald = hutan, Berg = gunung.'},
+{t:'group',q:'Gut oder schlecht für die Umwelt?',c:['gut ✅','schlecht ❌'],it:[['Wasser sparen',0],['Müll trennen',0],['Müll in den Fluss werfen',1],['Licht an lassen',1]],why:'Hemat air dan memilah sampah itu baik.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Fluss',0],['Flasche',1],['Plastik',2],['Luft',1]],why:'der Fluss, die Flasche, das Plastik, die Luft.'},
+{t:'group',q:'Pflanze oder Tier?',c:['Pflanze 🌱','Tier 🐾'],it:[['Baum',0],['Blume',0],['Vogel',1],['Fisch',1]],why:'Vogel = burung, Fisch = ikan.'},
+{t:'mc',img:'♻️',q:'Was bedeutet „recyceln“?',o:['mendaur ulang','membuang','menanam'],a:0,why:'recyceln = mendaur ulang.'},
+{t:'type',q:'Plural: der Baum → die ___',a:['Bäume'],why:'Baum → <b>Bäume</b> (umlaut + e).'},
+{t:'mc',q:'Wir müssen Müll ___.',o:['trennen','trennt','trenne'],a:0,why:'Setelah <b>müssen</b>, kata kerja kedua berbentuk infinitif di akhir kalimat.'},
+{t:'mc',q:'Was ist „der Müll“?',o:['sampah','air','udara'],a:0,why:'der Müll = sampah.'},
+{t:'mc',img:'💧',q:'Welches Wort passt?',o:['das Wasser','das Feuer','die Luft'],a:0,why:'das Wasser = air.'},
+{t:'type',q:'Plural: die Blume → die ___',a:['Blumen'],why:'Blume → <b>Blumen</b> (+n).'},
+{t:'type',q:'Ich ___ den Müll. (trennen)',a:['trenne'],why:'ich → trenn<b>e</b>.'},
+{t:'mc',q:'Das ist gut ___ die Umwelt.',o:['für','mit','von'],a:0,why:'gut <b>für</b> + Akkusativ.'},
+{t:'type',q:'Plural: der Fluss → die ___',a:['Flüsse'],why:'Fluss → <b>Flüsse</b> (umlaut + e).'},
+{t:'mc',q:'Wir fahren ___ Fahrrad.',o:['mit dem','in der','auf den'],a:0,why:'fahren <b>mit dem</b> + alat transportasi.'}]},
+{title:'Alltag',emoji:'⏰',
+w:[['aufstehen','bangun','⏰'],['das Frühstück','sarapan','🥣'],['essen','makan','🍽️'],['trinken','minum','🥤'],['schlafen','tidur','😴'],['der Bus','bus','🚌'],['das Haus','rumah','🏠'],['die Familie','keluarga','👨‍👩‍👧']],
+r:[['Wie spät ist es?','Jam berapa sekarang?'],['Es ist halb acht.','Jam setengah delapan (07.30).'],['Ich stehe um sieben Uhr auf.','Saya bangun jam tujuh.'],['Was machst du am Wochenende?','Apa yang kamu lakukan di akhir pekan?'],['Wie geht’s? – Gut, danke!','Apa kabar? – Baik, terima kasih!']],
+d:[['Anna','Wie spät ist es?'],['Max','Es ist halb acht.'],['Anna','Oh, ich muss los!'],['Max','Tschüss, bis später!']],
+g:{h:'Trennbare Verben',p:'Kata kerja berpisah (aufstehen, einkaufen) terbagi dua: bagian utama di posisi 2, awalan <b>di akhir kalimat</b>.',x:['aufstehen → Ich stehe um 7 Uhr <b>auf</b>.','einkaufen → Er kauft heute <b>ein</b>.','Konjugation: ich steh<b>e</b>, du steh<b>st</b>, er steh<b>t</b>']},
+quiz:[{t:'hear',say:'Es ist halb acht.',q:'Wie spät ist es?',o:['07:30','08:30','07:00'],a:0,why:'halb acht = 07:30.'},
+{t:'hear',say:'Ich trinke Wasser und esse ein Brot.',q:'Was trinkt die Person?',o:['Tee','Wasser','Milch'],a:1,why:'trinke Wasser = minum air.'},
+{t:'hear',say:'Ich stehe um sechs Uhr auf.',q:'Wann steht die Person auf?',o:['um 6 Uhr','um 7 Uhr','um 8 Uhr'],a:0,why:'sechs = 6.'},
+{t:'hear',say:'Ich frühstücke mit meiner Familie.',q:'Mit wem frühstückt die Person?',o:['mit der Familie','mit dem Lehrer','allein'],a:0,why:'die Familie = keluarga.'},
+{t:'hear',say:'Der Bus kommt um acht Uhr.',q:'Wann kommt der Bus?',o:['um 8 Uhr','um 9 Uhr','um 7 Uhr'],a:0,why:'acht = 8.'},
+{t:'hear',say:'Am Wochenende schlafe ich lange.',q:'Was macht die Person am Wochenende?',o:['Sie schläft lange.','Sie geht zur Schule.','Sie arbeitet.'],a:0,why:'lange schlafen = tidur lama.'},
+{t:'hear',say:'Wie geht’s? – Gut, danke!',q:'Wie geht es der Person?',o:['gut','schlecht','müde'],a:0,why:'gut = baik.'},
+{t:'hear',say:'Ich treffe meinen Freund im Park.',q:'Wen trifft die Person?',o:['den Freund','die Lehrerin','die Familie'],a:0,why:'treffen = bertemu.'},
+{t:'hear',say:'Es ist Viertel nach drei.',q:'Wie spät ist es?',o:['15:15','15:45','14:45'],a:0,why:'Viertel nach drei = 03.15.'},
+{t:'hear',say:'Ich esse Reis zum Mittagessen.',q:'Was isst die Person?',o:['Reis','Brot','Suppe'],a:0,why:'Reis = nasi; Mittagessen = makan siang.'},
+{t:'tf',q:'„Ich aufstehe um 7 Uhr.“ ist richtig.',a:false,why:'Yang benar: „Ich stehe um 7 Uhr <b>auf</b>.“'},
+{t:'tf',q:'„das Frühstück“ bedeutet „sarapan“.',a:true,why:'das Frühstück = sarapan.'},
+{t:'tf',q:'„halb acht“ ist 08:30.',a:false,why:'halb acht = 07:30.'},
+{t:'tf',q:'Man trinkt Wasser.',a:true,why:'trinken = minum.'},
+{t:'tf',q:'„Ich stehe um sieben Uhr auf.“ ist richtig.',a:true,why:'Awalan auf di akhir kalimat.'},
+{t:'tf',q:'„schlafen“ bedeutet „makan“.',a:false,why:'schlafen = tidur; essen = makan.'},
+{t:'tf',q:'„Er steht um 6 Uhr auf.“ ist richtig.',a:true,why:'er → steht … auf.'},
+{t:'tf',q:'„Ich esse“ kommt von „essen“.',a:true,why:'essen → ich esse.'},
+{t:'tf',q:'„Tschüss“ sagt man zur Begrüßung.',a:false,why:'Tschüss = pamitan.'},
+{t:'tf',q:'„die Familie“ bedeutet „keluarga“.',a:true,why:'die Familie = keluarga.'},
+{t:'group',q:'Wann sagt man das?',c:['am Morgen ☀️','am Abend 🌙'],it:[['Guten Morgen',0],['frühstücken',0],['aufstehen',0],['Gute Nacht',1],['schlafen',1],['Guten Abend',1]],why:'Morgen = pagi, Abend = malam.'},
+{t:'group',q:'Essen oder Trinken?',c:['essen 🍽️','trinken 🥤'],it:[['Brot',0],['Wasser',1],['Reis',0],['Tee',1]],why:'Brot & Reis dimakan; Wasser & Tee diminum.'},
+{t:'group',q:'Hallo oder Tschüss?',c:['Hallo 👋','Tschüss 🚪'],it:[['Guten Morgen',0],['Guten Tag',0],['Bis später',1],['Tschüss',1]],why:'Bis später = sampai nanti.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Bus',0],['Familie',1],['Haus',2],['Frühstück',2]],why:'der Bus, die Familie, das Haus, das Frühstück.'},
+{t:'group',q:'Nomen oder Verb?',c:['Nomen','Verb'],it:[['Haus',0],['essen',1],['schlafen',1],['Freund',0]],why:'Kata benda diawali huruf besar.'},
+{t:'group',q:'Trennbar oder nicht trennbar?',c:['trennbar','nicht trennbar'],it:[['aufstehen',0],['einkaufen',0],['essen',1],['trinken',1]],why:'auf- dan ein- terpisah di kalimat.'},
+{t:'group',q:'Männlich oder weiblich?',c:['männlich','weiblich'],it:[['Vater',0],['Mutter',1],['Bruder',0],['Schwester',1]],why:'Vater/Bruder = laki-laki; Mutter/Schwester = perempuan.'},
+{t:'group',q:'Vormittag oder Nachmittag?',c:['Vormittag ☀️','Nachmittag 🌤️'],it:[['um 9 Uhr',0],['um 10 Uhr',0],['um 15 Uhr',1],['um 17 Uhr',1]],why:'15 & 17 Uhr = sore hari.'},
+{t:'group',q:'Zu Hause oder unterwegs?',c:['zu Hause 🏠','unterwegs 🚌'],it:[['schlafen',0],['frühstücken',0],['Bus fahren',1],['einkaufen',1]],why:'unterwegs = dalam perjalanan.'},
+{t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:[['Vater',0],['Mutter',1],['Wochenende',2],['Freund',0]],why:'der Vater, die Mutter, das Wochenende, der Freund.'},
+{t:'mc',img:'🥣',q:'„das Frühstück“ =',o:['sarapan','makan malam','makan siang'],a:0,why:'das Frühstück = sarapan.'},
+{t:'type',q:'Ich ___ um sieben Uhr auf. (aufstehen)',a:['stehe'],why:'ich → steh<b>e</b>; awalan <b>auf</b> di akhir.'},
+{t:'mc',q:'„schlafen“ =',o:['tidur','makan','minum'],a:0,why:'schlafen = tidur.'},
+{t:'mc',q:'07:30 sagt man:',o:['halb acht','halb sieben','acht Uhr'],a:0,why:'halb acht = setengah delapan.'},
+{t:'type',q:'Er ___ um sechs Uhr auf. (aufstehen)',a:['steht'],why:'er → steh<b>t</b> … auf.'},
+{t:'type',q:'Du ___ Wasser. (trinken)',a:['trinkst'],why:'du → trink<b>st</b>.'},
+{t:'mc',q:'Ich ___ ein Brot.',o:['esse','isst','essen'],a:0,why:'ich → esse.'},
+{t:'mc',img:'🚌',q:'Das ist ___ Bus.',o:['der','die','das'],a:0,why:'der Bus.'},
+{t:'mc',q:'Wie fragt man nach der Uhrzeit?',o:['Wie spät ist es?','Wie heißt du?','Wo wohnst du?'],a:0,why:'Wie spät ist es? = Jam berapa?'},
+{t:'type',q:'Wir ___ Wasser. (trinken)',a:['trinken'],why:'wir → trinken (sama dengan infinitif).'}]},
+{title:'Uhrzeit',emoji:'🕐',auto:1,cats:['Zeit-Wörter ⏰','Tageszeit 🌅'],
+w:[['die Uhr','jam (alat) / arloji','🕐',0],['die Stunde','jam (satuan waktu)','⏳',0],['die Minute','menit','⏱️',0],['die Sekunde','detik','⏲️',0],['halb','setengah','½',0],['das Viertel','seperempat','¼',0],['die Zeit','waktu','⌛',0],['der Morgen','pagi','🌅',1],['der Mittag','siang','☀️',1],['der Nachmittag','sore','🌤️',1],['der Abend','petang / malam','🌆',1],['die Nacht','malam (larut)','🌙',1]],
+r:[['Wie spät ist es?','Jam berapa sekarang?'],['Es ist halb acht.','Jam 07.30.'],['Es ist Viertel nach drei.','Jam 15.15.'],['Um wie viel Uhr beginnt der Unterricht?','Jam berapa pelajaran mulai?'],['Der Unterricht beginnt um acht Uhr.','Pelajaran mulai jam delapan.']],
+d:[['Ali','Entschuldigung, wie spät ist es?'],['Anna','Es ist Viertel vor neun.'],['Ali','Danke! Um wie viel Uhr beginnt der Unterricht?'],['Anna','Um neun Uhr.']],
+g:{h:'Die Uhrzeit sagen',p:'Pola: <b>Viertel nach</b> (lewat 15 menit), <b>Viertel vor</b> (kurang 15 menit), <b>halb</b> + jam <u>berikutnya</u> (setengah menuju jam itu). Pertanyaan: <b>Wie spät ist es?</b> / <b>Um wie viel Uhr …?</b>',x:['3:15 → Viertel <b>nach</b> drei','2:45 → Viertel <b>vor</b> drei','2:30 → <b>halb</b> drei (setengah menuju jam 3!)']},
+quiz:[
+{t:'hear',say:'Es ist Viertel nach drei.',q:'Wie spät ist es?',o:['15:15','15:45','14:45'],a:0,why:'Viertel nach drei = 03.15.'},
+{t:'hear',say:'Es ist halb neun.',q:'Wie spät ist es?',o:['08:30','09:30','09:00'],a:0,why:'halb neun = 08.30 (setengah menuju jam 9).'},
+{t:'hear',say:'Es ist Viertel vor acht.',q:'Wie spät ist es?',o:['07:45','08:15','07:15'],a:0,why:'Viertel vor acht = 07.45.'},
+{t:'tf',q:'„Viertel vor acht“ ist 07:45.',a:true,why:'vor = sebelum → 07.45.'},
+{t:'tf',q:'„halb zehn“ ist 10:30.',a:false,why:'halb zehn = 09:30.'},
+{t:'mc',q:'Wie fragt man nach der Uhrzeit?',o:['Wie spät ist es?','Wie heißt du?','Wo wohnst du?'],a:0,why:'Wie spät ist es? = Jam berapa?'},
+{t:'type',q:'07:30 = ___ acht',a:['halb'],why:'halb acht = 07:30.'},
+{t:'mc',q:'Der Unterricht beginnt ___ acht Uhr.',o:['um','in','am'],a:0,why:'Jam pakai <b>um</b>: um acht Uhr.'}]},
+{title:'Farben',emoji:'🎨',auto:1,
+objs:{rot:['die Tomate','die Erdbeere','die Rose'],gelb:['die Banane','die Sonne','die Zitrone'],'grün':['das Gras','der Frosch','der Baum'],blau:['das Meer','der Himmel','die Jeans'],schwarz:['die Nacht','die Katze','die Kohle'],'weiß':['der Schnee','die Milch','das Papier'],braun:['die Schokolade','der Kaffee','das Holz']},
+w:[['rot','merah','🔴'],['blau','biru','🔵'],['gelb','kuning','🟡'],['grün','hijau','🟢'],['schwarz','hitam','⚫'],['weiß','putih','⚪'],['braun','cokelat','🟤'],['orange','oranye','🟠'],['lila','ungu','🟣'],['rosa','merah muda','🌸'],['grau','abu-abu','☁️'],['bunt','berwarna-warni','🌈']],
+r:[['Welche Farbe hat das?','Warna apa ini?'],['Das ist rot.','Ini merah.'],['Meine Lieblingsfarbe ist blau.','Warna favorit saya biru.'],['Ich mag Grün.','Saya suka hijau.']],
+d:[['Max','Welche Farbe hat dein Auto?'],['Lisa','Es ist blau.'],['Max','Ich mag Blau!'],['Lisa','Meine Lieblingsfarbe ist Gelb.']],
+g:{h:'Farben als Adjektive',p:'Warna berdiri setelah <b>sein</b> dan tidak berubah: <b>Die Banane ist gelb.</b> Tanya: <b>Welche Farbe hat …?</b> Warna sebagai kata benda ditulis kapital: <b>das Rot</b>, <b>Ich mag Grün</b>.',x:['Der Himmel ist <b>blau</b>.','Welche Farbe hat die Tomate? – Sie ist <b>rot</b>.','Meine Lieblingsfarbe ist <b>lila</b>.']},
+quiz:[
+{t:'hear',say:'Der Himmel ist blau.',q:'Was ist blau?',o:['der Himmel','das Gras','die Banane'],a:0,why:'der Himmel = langit.'},
+{t:'mc',q:'Wie fragt man nach der Farbe?',o:['Welche Farbe hat das?','Wie heißt du?','Wo ist das?'],a:0,why:'Welche Farbe = warna apa.'},
+{t:'type',q:'Die Banane ist ___. (kuning)',a:['gelb'],why:'gelb = kuning.'}]},
+{title:'Berufe',emoji:'👩‍⚕️',auto:1,cats:['Krankenhaus 🏥','Schule 🏫','Restaurant / Café 🍴'],
+w:[['der Arzt','dokter','👨‍⚕️',0],['die Ärztin','dokter (perempuan)','👩‍⚕️',0],['die Krankenschwester','perawat','💉',0],['der Lehrer','guru','👨‍🏫',1],['die Lehrerin','guru (perempuan)','👩‍🏫',1],['der Direktor','kepala sekolah','🧑‍💼',1],['der Koch','koki','👨‍🍳',2],['der Kellner','pelayan','🍽️',2],['der Bäcker','tukang roti','🥖',2],['der Polizist','polisi','👮'],['der Fahrer','sopir','🚌'],['der Bauer','petani','👨‍🌾'],['der Ingenieur','insinyur','👷'],['der Verkäufer','penjual','🛒']],
+r:[['Was sind Sie von Beruf?','Apa pekerjaan Anda?'],['Ich bin Lehrer.','Saya guru.'],['Ich arbeite im Krankenhaus.','Saya bekerja di rumah sakit.'],['Wo arbeitest du?','Di mana kamu bekerja?']],
+d:[['Lena','Was bist du von Beruf?'],['Tom','Ich bin Koch. Und du?'],['Lena','Ich bin Ärztin.'],['Tom','Wo arbeitest du?']],
+g:{h:'Berufe: männlich & weiblich',p:'Nama pekerjaan tanpa artikel setelah <b>sein</b>: <b>Ich bin Lehrer.</b> Untuk perempuan tambah <b>-in</b>: der Lehrer → die Lehrer<b>in</b>. Tempat kerja memakai <b>in + Dativ</b>: im (in dem) Krankenhaus, in der Schule.',x:['Er ist Koch. → Sie ist Köch<b>in</b>.','Ich bin Lehrer<b>in</b>.','Ich arbeite <b>im</b> Restaurant / <b>in der</b> Schule.']},
+quiz:[
+{t:'hear',say:'Ich bin Ärztin und arbeite im Krankenhaus.',q:'Wo arbeitet die Person?',o:['im Krankenhaus','in der Schule','im Restaurant'],a:0,why:'das Krankenhaus = rumah sakit.'},
+{t:'tf',q:'„die Lehrerin“ ist ein Mann.',a:false,why:'-in menandakan perempuan.'},
+{t:'type',q:'Perempuan: der Lehrer → die ___',a:['Lehrerin'],why:'tambah <b>-in</b>.'},
+{t:'mc',q:'Was macht ein Koch?',o:['Er kocht.','Er fährt.','Er schreibt.'],a:0,why:'Koch → kochen = memasak.'},
+{t:'mc',q:'Ich bin ___ Lehrer.',o:['(tanpa artikel)','ein','einen'],a:0,why:'Setelah sein, profesi tanpa artikel: Ich bin Lehrer.'}]},
+{title:'Hobbys',emoji:'⚽',auto:1,cats:['drinnen 🏠','draußen 🌳'],
+w:[['lesen','membaca','📖',0],['malen','melukis','🎨',0],['singen','menyanyi','🎤',0],['kochen','memasak','🍳',0],['zeichnen','menggambar','✏️',0],['Musik hören','mendengarkan musik','🎧',0],['Gitarre spielen','bermain gitar','🎸',0],['schwimmen','berenang','🏊',1],['wandern','mendaki','🥾',1],['Fußball spielen','bermain sepak bola','⚽',1],['reisen','bepergian','✈️',1],['tanzen','menari','💃']],
+r:[['Was ist dein Hobby?','Apa hobimu?'],['Mein Hobby ist Lesen.','Hobi saya membaca.'],['Ich schwimme gern.','Saya suka berenang.'],['Was machst du in deiner Freizeit?','Apa yang kamu lakukan di waktu luang?']],
+d:[['Anna','Was machst du in deiner Freizeit?'],['Ali','Ich spiele gern Fußball. Und du?'],['Anna','Ich lese gern und höre Musik.'],['Ali','Super!']],
+g:{h:'gern + Verb',p:'Untuk menyatakan suka: <b>Verb + gern</b>. Konjugasi: ich <b>-e</b>, du <b>-st</b>, er/sie <b>-t</b>. Beberapa kata kerja berubah vokal: lesen → du <b>liest</b>.',x:['Ich schwimm<b>e</b> gern.','Du tanz<b>st</b> gern.','Er l<b>ie</b>st gern.']},
+quiz:[
+{t:'hear',say:'Ich höre gern Musik.',q:'Was macht die Person gern?',o:['Musik hören','lesen','tanzen'],a:0,why:'Musik hören = mendengarkan musik.'},
+{t:'type',q:'Ich ___ gern. (lesen)',a:['lese'],why:'ich → les<b>e</b>.'},
+{t:'type',q:'Du ___ gern. (schwimmen)',a:['schwimmst'],why:'du → schwimm<b>st</b>.'},
+{t:'tf',q:'„Ich schwimme gern.“ bedeutet „Saya suka berenang.“',a:true,why:'gern = dengan senang hati / suka.'},
+{t:'mc',q:'Ich spiele gern ___.',o:['Fußball','Fußballs','einen Fußball'],a:0,why:'Olahraga tanpa artikel: Fußball spielen.'}]},
+{title:'Essen & Trinken',emoji:'🍽️',auto:1,cats:['Essen 🍽️','Trinken 🥤'],
+w:[['das Brot','roti','🍞',0],['der Reis','nasi','🍚',0],['der Apfel','apel','🍎',0],['das Fleisch','daging','🍖',0],['der Fisch','ikan','🐟',0],['das Ei','telur','🥚',0],['die Suppe','sup','🍲',0],['das Wasser','air','💧',1],['der Tee','teh','🍵',1],['die Milch','susu','🥛',1],['der Kaffee','kopi','☕',1],['der Saft','jus','🧃',1]],
+r:[['Ich möchte einen Kaffee, bitte.','Saya mau secangkir kopi.'],['Ich habe Hunger. / Ich habe Durst.','Saya lapar. / Saya haus.'],['Was möchten Sie trinken?','Anda mau minum apa?'],['Guten Appetit! – Danke, gleichfalls!','Selamat makan! – Terima kasih, Anda juga!']],
+d:[['Kellner','Guten Tag! Was möchten Sie trinken?'],['Gast','Ich möchte einen Tee, bitte.'],['Kellner','Und zu essen?'],['Gast','Eine Suppe, bitte.']],
+g:{h:'möchten + Akkusativ',p:'<b>Ich möchte …</b> = saya ingin (sopan). Benda maskulin berubah di Akkusativ: <b>ein → einen</b>. Feminin (eine) dan netral (ein) tetap.',x:['der Kaffee → Ich möchte <b>einen</b> Kaffee.','die Suppe → Ich möchte <b>eine</b> Suppe.','das Brot → Ich möchte <b>ein</b> Brot.']},
+quiz:[
+{t:'hear',say:'Ich möchte einen Tee, bitte.',q:'Was möchte die Person?',o:['einen Tee','einen Kaffee','ein Wasser'],a:0,why:'der Tee → einen Tee.'},
+{t:'mc',q:'Ich möchte ___ Kaffee.',o:['einen','eine','ein'],a:0,why:'der Kaffee maskulin → Akkusativ <b>einen</b>.'},
+{t:'type',q:'Ich möchte ___ Apfel. (ein / einen)',a:['einen'],why:'der Apfel → <b>einen</b>.'},
+{t:'tf',q:'„Ich trinke ein Brot.“ ist richtig.',a:false,why:'Brot dimakan (essen), bukan diminum.'},
+{t:'mc',q:'Wie bestellt man höflich?',o:['Ich möchte einen Kaffee, bitte.','Gib Kaffee!','Kaffee ist gut.'],a:0,why:'Ich möchte … , bitte = cara sopan.'}]},
+{lv:'A2',title:'Wohnen',emoji:'🏠',auto:1,cats:['Zimmer 🚪','Möbel 🛋️'],
+w:[['die Wohnung','apartemen','🏢'],['das Zimmer','kamar','🚪'],['die Miete','uang sewa','💶'],['der Balkon','balkon','🌿'],['die Küche','dapur','🍳',0],['das Bad','kamar mandi','🛁',0],['das Schlafzimmer','kamar tidur','🛏️',0],['das Wohnzimmer','ruang tamu','🛋️',0],['der Schrank','lemari','🗄️',1],['das Sofa','sofa','🛋️',1],['das Bett','tempat tidur','🛌',1],['die Lampe','lampu','💡',1]],
+r:[['Ich suche eine Wohnung.','Saya mencari apartemen.'],['Wie hoch ist die Miete?','Berapa harga sewanya?'],['Die Wohnung hat drei Zimmer.','Apartemen punya tiga kamar.'],['Wann kann ich die Wohnung besichtigen?','Kapan saya bisa melihat apartemennya?']],
+d:[['Anna','Ich suche eine Wohnung mit Balkon.'],['Makler','Diese Wohnung hat zwei Zimmer und einen Balkon.'],['Anna','Wie hoch ist die Miete?'],['Makler','Sie kostet 600 Euro im Monat.']],
+g:{h:'Wechselpräpositionen: Wo? / Wohin?',p:'Preposisi <b>in, an, auf, neben, über, unter, vor, hinter, zwischen</b>: <b>Wo?</b> (posisi) → <b>Dativ</b>; <b>Wohin?</b> (arah/gerak) → <b>Akkusativ</b>.',x:['Wo? Die Lampe steht <b>auf dem</b> Tisch.','Wohin? Ich stelle die Lampe <b>auf den</b> Tisch.','Wo? Das Bett steht <b>im</b> (in dem) Schlafzimmer.']},
+quiz:[
+{t:'hear',say:'Die Wohnung hat zwei Zimmer und einen Balkon.',q:'Was hat die Wohnung?',o:['einen Balkon','einen Garten','eine Garage'],a:0,why:'Balkon = balkon.'},
+{t:'mc',q:'Wohin? Ich stelle die Lampe auf ___ Tisch.',o:['den','dem','der'],a:0,why:'Wohin? → Akkusativ: auf <b>den</b> Tisch.'},
+{t:'type',q:'Wo? Das Buch liegt auf ___ Tisch. (dem / den)',a:['dem'],why:'Wo? → Dativ: auf <b>dem</b> Tisch.'},
+{t:'tf',q:'Wo? → Akkusativ. Wohin? → Dativ.',a:false,why:'Terbalik: Wo? = Dativ, Wohin? = Akkusativ.'},
+{t:'mc',q:'Das Sofa steht ___ Wohnzimmer.',o:['im','in das','ins'],a:0,why:'Wo? → in dem = <b>im</b>.'}]},
+{lv:'A2',title:'Körper & Gesundheit',emoji:'🏥',auto:1,cats:['Körper 🧍','Medizin 💊'],
+w:[['der Kopf','kepala','🧠',0],['der Bauch','perut','🤰',0],['der Rücken','punggung','🧍',0],['die Hand','tangan','✋',0],['das Bein','kaki (tungkai)','🦵',0],['der Arm','lengan','💪',0],['die Tablette','tablet obat','💊',1],['das Fieber','demam','🌡️',1],['die Erkältung','flu / pilek','🤧',1],['der Husten','batuk','😷',1],['die Apotheke','apotek','🏪'],['die Schmerzen','rasa sakit','😣']],
+r:[['Was fehlt Ihnen?','Anda sakit apa?'],['Ich habe Kopfschmerzen.','Kepala saya sakit.'],['Mir tut der Bauch weh.','Perut saya sakit.'],['Sie sollen viel trinken.','Anda harus banyak minum.']],
+d:[['Arzt','Was fehlt Ihnen?'],['Patient','Ich habe Fieber und Husten.'],['Arzt','Sie haben eine Erkältung. Sie sollen viel trinken.'],['Patient','Danke, Herr Doktor.']],
+g:{h:'Modalverb sollen & Dativ bei weh tun',p:'<b>sollen</b> = sebaiknya/harus (saran): ich soll, du <b>sollst</b>, er soll, wir sollen + infinitif di akhir. Sakit: <b>Mir tut der Kopf weh</b> (Dativ: mir/dir/ihm).',x:['Du <b>sollst</b> viel Wasser <b>trinken</b>.','<b>Mir</b> tut der Rücken weh.','Ich habe Kopfschmerzen.']},
+quiz:[
+{t:'hear',say:'Ich habe Kopfschmerzen und Fieber.',q:'Was hat die Person?',o:['Kopfschmerzen und Fieber','Husten und Bauchschmerzen','Rückenschmerzen'],a:0,why:'Kopfschmerzen = sakit kepala; Fieber = demam.'},
+{t:'mc',q:'Du ___ viel Wasser trinken.',o:['sollst','sollen','solle'],a:0,why:'du → soll<b>st</b>.'},
+{t:'type',q:'Ich ___ Fieber. (haben)',a:['habe'],why:'ich → hab<b>e</b>.'},
+{t:'tf',q:'„Mir tut der Bauch weh.“ bedeutet „Perut saya sakit.“',a:true,why:'weh tun = sakit.'},
+{t:'mc',q:'Wie fragt der Arzt?',o:['Was fehlt Ihnen?','Wie spät ist es?','Wo wohnen Sie?'],a:0,why:'Was fehlt Ihnen? = Anda sakit apa?'}]},
+{lv:'A2',title:'Verkehr & Reisen',emoji:'✈️',auto:1,cats:['Verkehrsmittel 🚆','Ort 📍'],
+w:[['der Zug','kereta','🚆',0],['das Flugzeug','pesawat','✈️',0],['die U-Bahn','kereta bawah tanah','🚇',0],['das Schiff','kapal','🚢',0],['der Bahnhof','stasiun','🚉',1],['der Flughafen','bandara','🛫',1],['die Haltestelle','halte','🚏',1],['das Hotel','hotel','🏨',1],['die Fahrkarte','tiket (transportasi)','🎫'],['der Koffer','koper','🧳'],['das Gleis','jalur (kereta)','🛤️'],['der Urlaub','liburan','🏖️']],
+r:[['Eine Fahrkarte nach Berlin, bitte.','Satu tiket ke Berlin, tolong.'],['Wann fährt der nächste Zug?','Kapan kereta berikutnya berangkat?'],['Von welchem Gleis fährt der Zug?','Kereta berangkat dari jalur berapa?'],['Ich bin nach Hamburg gefahren.','Saya sudah pergi ke Hamburg.']],
+d:[['Kunde','Eine Fahrkarte nach München, bitte.'],['Verkäufer','Hin und zurück?'],['Kunde','Ja. Von welchem Gleis fährt der Zug?'],['Verkäufer','Von Gleis fünf.']],
+g:{h:'Perfekt (Vergangenheit)',p:'Perfekt = <b>haben/sein</b> (posisi 2) + <b>Partizip II</b> (akhir). Gerak/perubahan keadaan (fahren, fliegen, gehen, reisen) → <b>sein</b>. Lainnya → <b>haben</b>.',x:['Ich <b>bin</b> nach Berlin <b>gefahren</b>.','Wir <b>sind</b> <b>geflogen</b>.','Ich <b>habe</b> eine Fahrkarte <b>gekauft</b>.']},
+quiz:[
+{t:'hear',say:'Der Zug fährt um zehn Uhr vom Gleis drei ab.',q:'Von welchem Gleis fährt der Zug?',o:['Gleis 3','Gleis 10','Gleis 13'],a:0,why:'Gleis drei = jalur 3.'},
+{t:'mc',q:'Ich ___ gestern nach Berlin gefahren.',o:['bin','habe','werde'],a:0,why:'fahren = gerak → <b>sein</b>: bin gefahren.'},
+{t:'type',q:'Partizip II: fliegen → ___',a:['geflogen'],why:'fliegen → geflogen (sein).'},
+{t:'tf',q:'„Ich habe nach Berlin gefahren.“ ist richtig.',a:false,why:'Yang benar: Ich <b>bin</b> nach Berlin gefahren.'},
+{t:'mc',q:'Ich ___ eine Fahrkarte gekauft.',o:['habe','bin','sein'],a:0,why:'kaufen → <b>haben</b>.'}]},
+{lv:'A2',title:'Einkaufen & Kleidung',emoji:'👕',auto:1,cats:['Kleidung 👕','Einkaufen 🛒'],
+w:[['die Hose','celana','👖',0],['das Hemd','kemeja','👔',0],['die Jacke','jaket','🧥',0],['das Kleid','gaun','👗',0],['der Rock','rok','👗',0],['der Pullover','sweter','🧶',0],['der Schuh','sepatu','👟',0],['die Mütze','topi','🧢',0],['die Größe','ukuran','📏',1],['der Preis','harga','🏷️',1],['die Kasse','kasir','🧾',1],['das Angebot','penawaran / diskon','🔖',1]],
+r:[['Was kostet die Jacke?','Berapa harga jaketnya?'],['Haben Sie das in Größe M?','Ada ukuran M?'],['Die Hose gefällt mir.','Saya suka celananya.'],['Das passt mir nicht.','Itu tidak muat untuk saya.']],
+d:[['Verkäufer','Kann ich Ihnen helfen?'],['Kundin','Ja, ich suche eine Jacke in Größe M.'],['Verkäufer','Diese hier kostet 50 Euro.'],['Kundin','Sie gefällt mir. Ich nehme sie.']],
+g:{h:'gefallen & passen + Dativ',p:'<b>gefallen</b> (suka) dan <b>passen</b> (cocok/muat) memakai <b>Dativ</b>: <b>mir, dir, ihm/ihr, uns, Ihnen</b>. Bendanya jadi subjek.',x:['Die Hose gefällt <b>mir</b>.','Das Hemd passt <b>ihm</b> nicht.','Gefällt <b>dir</b> der Rock?']},
+quiz:[
+{t:'hear',say:'Die Hose kostet zwanzig Euro.',q:'Wie viel kostet die Hose?',o:['20 €','12 €','200 €'],a:0,why:'zwanzig = 20.'},
+{t:'mc',q:'Die Jacke gefällt ___.',o:['mir','mich','ich'],a:0,why:'gefallen + Dativ → <b>mir</b>.'},
+{t:'type',q:'Das Hemd passt ___ nicht. (saya: ich → Dativ)',a:['mir'],why:'ich → Dativ: <b>mir</b>.'},
+{t:'tf',q:'„Die Hose gefällt mich.“ ist richtig.',a:false,why:'Yang benar: gefällt <b>mir</b> (Dativ).'},
+{t:'mc',q:'Wie fragt man nach dem Preis?',o:['Was kostet das?','Wie heißt das?','Wo ist das?'],a:0,why:'Was kostet das? = Berapa harganya?'}]},
+{lv:'A2',title:'Wetter & Jahreszeiten',emoji:'🌦️',auto:1,cats:['Wetter 🌦️','Jahreszeit 🍂'],
+w:[['der Regen','hujan','🌧️',0],['der Schnee','salju','❄️',0],['der Wind','angin','🌬️',0],['das Gewitter','badai petir','⛈️',0],['die Wolke','awan','☁️',0],['der Frühling','musim semi','🌸',1],['der Sommer','musim panas','☀️',1],['der Herbst','musim gugur','🍂',1],['der Winter','musim dingin','⛄',1],['das Wetter','cuaca','🌤️'],['die Temperatur','suhu','🌡️'],['der Grad','derajat','°']],
+r:[['Wie ist das Wetter heute?','Bagaimana cuaca hari ini?'],['Es regnet.','Hujan.'],['Es sind 25 Grad.','Suhunya 25 derajat.'],['Morgen wird es kälter.','Besok jadi lebih dingin.']],
+d:[['Tom','Wie ist das Wetter heute?'],['Lisa','Es regnet und es ist kalt.'],['Tom','Morgen wird es wärmer.'],['Lisa','Super, dann gehen wir spazieren.']],
+g:{h:'Komparativ',p:'Perbandingan: adjektiva + <b>-er</b> + <b>als</b>. Banyak yang pakai umlaut: warm → w<b>ä</b>rmer, kalt → k<b>ä</b>lter. Tidak beraturan: gut → <b>besser</b>, viel → <b>mehr</b>.',x:['Im Sommer ist es <b>wärmer als</b> im Winter.','Heute ist es <b>kälter als</b> gestern.','Das Wetter ist <b>besser</b>.']},
+quiz:[
+{t:'hear',say:'Morgen regnet es und es ist kalt.',q:'Wie wird das Wetter morgen?',o:['Regen und kalt','Sonne und warm','Schnee und Wind'],a:0,why:'regnen = hujan; kalt = dingin.'},
+{t:'mc',q:'Im Sommer ist es ___ als im Winter.',o:['wärmer','warm','am wärmsten'],a:0,why:'Komparativ + als: <b>wärmer</b> als.'},
+{t:'type',q:'Komparativ: kalt → ___',a:['kälter'],why:'kalt → k<b>ä</b>lt<b>er</b>.'},
+{t:'tf',q:'„gut“ → „besser“ ist ein Komparativ.',a:true,why:'gut – besser – am besten.'},
+{t:'mc',q:'Es ___ heute. (regnen)',o:['regnet','regne','regnen'],a:0,why:'es → regn<b>et</b>.'}]},
+{lv:'A2',title:'Stadt & Orientierung',emoji:'🏙️',auto:1,cats:['Gebäude 🏢','Verkehr 🚦'],
+w:[['die Post','kantor pos','📮',0],['die Bank','bank','🏦',0],['der Supermarkt','supermarket','🛒',0],['das Kino','bioskop','🎬',0],['das Museum','museum','🏛️',0],['die Bibliothek','perpustakaan','📚',0],['die Straße','jalan','🛣️',1],['die Kreuzung','persimpangan','🔀',1],['die Ampel','lampu lalu lintas','🚦',1],['die Brücke','jembatan','🌉',1],['der Park','taman','🌳'],['die Stadt','kota','🏙️']],
+r:[['Entschuldigung, wo ist der Bahnhof?','Permisi, di mana stasiun?'],['Gehen Sie geradeaus.','Jalan lurus.'],['Dann links / rechts.','Lalu kiri / kanan.'],['Die Post ist neben der Bank.','Kantor pos di sebelah bank.']],
+d:[['Touristin','Entschuldigung, wie komme ich zur Post?'],['Passant','Gehen Sie geradeaus bis zur Ampel.'],['Passant','Dann gehen Sie rechts. Die Post ist neben der Bank.'],['Touristin','Vielen Dank!']],
+g:{h:'Wegbeschreibung: Imperativ & Dativ',p:'Imperativ sopan: <b>Gehen Sie …</b>. Preposisi lokasi <b>neben, gegenüber, vor, hinter, an</b> + <b>Dativ</b> (der → dem, die → der, das → dem). <b>zu</b> + Dativ: zum (zu dem) Bahnhof, zur (zu der) Post.',x:['<b>Gehen Sie</b> geradeaus und dann links.','Die Bank ist <b>neben der</b> Post.','Wie komme ich <b>zum</b> Bahnhof?']},
+quiz:[
+{t:'hear',say:'Gehen Sie geradeaus und dann links.',q:'Wohin geht man?',o:['geradeaus, dann links','links, dann rechts','rechts, dann geradeaus'],a:0,why:'geradeaus = lurus; links = kiri.'},
+{t:'mc',q:'Die Bank ist neben ___ Post.',o:['der','dem','die'],a:0,why:'die Post (feminin) + Dativ → <b>der</b>.'},
+{t:'type',q:'Die Apotheke ist gegenüber ___ Kino. (dem / der)',a:['dem'],why:'das Kino + Dativ → <b>dem</b>.'},
+{t:'tf',q:'„links“ bedeutet „kanan“.',a:false,why:'links = kiri; rechts = kanan.'},
+{t:'mc',q:'Wie fragt man nach dem Weg?',o:['Wie komme ich zum Bahnhof?','Wie heißt du?','Wie spät ist es?'],a:0,why:'Wie komme ich zu …? = Bagaimana ke …?'}]}
+];
+DATA.forEach(t=>t.lv=t.lv||'A1')
+const STORIES={A1:[
+{t:'Die kleine Meerjungfrau',e:'🌊',src:'nach Hans Christian Andersen',x:['Im Meer lebt eine kleine Meerjungfrau.','Sie hat einen Fischschwanz und schwimmt jeden Tag mit den Fischen.','Eines Tages sieht sie einen Prinzen auf einem Schiff.','Das Schiff geht im Sturm kaputt. Der Prinz fällt ins Wasser.','Die Meerjungfrau rettet den Prinzen. Sie hat ihn sehr lieb.'],
+q:[{t:'tf',q:'Die Meerjungfrau lebt im Wald.',a:false,why:'Sie lebt im Meer.'},{t:'mc',q:'Wen sieht sie auf dem Schiff?',o:['einen Prinzen','einen Fisch','einen Hund'],a:0,why:'Sie sieht einen Prinzen.'},{t:'mc',q:'Was macht die Meerjungfrau im Sturm?',o:['Sie rettet den Prinzen.','Sie isst Fisch.','Sie schläft.'],a:0,why:'retten = menyelamatkan.'},{t:'tf',q:'Das Schiff ist kaputt.',a:true,why:'Das Schiff geht kaputt.'}]},
+{t:'Rotkäppchen',e:'🌲',src:'nach den Brüdern Grimm',x:['Rotkäppchen geht durch den Wald zur Großmutter.','Im Korb hat sie Kuchen und Wein.','Im Wald trifft sie den Wolf.','Der Wolf läuft schnell zum Haus der Großmutter.','Am Ende hilft ein Jäger. Alle sind wieder glücklich.'],
+q:[{t:'tf',q:'Rotkäppchen geht zur Großmutter.',a:true,why:'Richtig.'},{t:'mc',q:'Was hat sie im Korb?',o:['Kuchen und Wein','Brot und Fisch','Äpfel und Milch'],a:0,why:'Kuchen und Wein.'},{t:'mc',q:'Wen trifft sie im Wald?',o:['den Wolf','den Bär','den Fuchs'],a:0,why:'der Wolf = serigala.'},{t:'tf',q:'Ein Jäger hilft am Ende.',a:true,why:'der Jäger = pemburu.'}]},
+{t:'Der Froschkönig',e:'🐸',src:'nach den Brüdern Grimm',x:['Eine Prinzessin spielt am Teich mit einer goldenen Kugel.','Die Kugel fällt ins Wasser.','Ein Frosch bringt die Kugel zurück.','Die Prinzessin sagt: „Du darfst bei mir essen.“','Am Ende wird der Frosch ein Prinz.'],
+q:[{t:'tf',q:'Die Kugel ist aus Gold.',a:true,why:'goldene Kugel.'},{t:'mc',q:'Wer bringt die Kugel zurück?',o:['ein Frosch','ein Fisch','ein Vogel'],a:0,why:'der Frosch = katak.'},{t:'mc',q:'Was wird der Frosch am Ende?',o:['ein Prinz','ein Hund','ein Fisch'],a:0,why:'Er wird ein Prinz.'},{t:'tf',q:'Die Kugel fällt in den Wald.',a:false,why:'Sie fällt ins Wasser.'}]},
+{t:'Die Bremer Stadtmusikanten',e:'🏘️',src:'nach den Brüdern Grimm',x:['Ein Esel, ein Hund, eine Katze und ein Hahn sind alt.','Sie gehen nach Bremen und machen dort Musik.','Im Wald sehen sie ein Haus mit Räubern.','Die Tiere singen laut. Die Räuber laufen weg.','Die Tiere bleiben im Haus und sind glücklich.'],
+q:[{t:'mc',q:'Wie viele Tiere gehen nach Bremen?',o:['vier','drei','fünf'],a:0,why:'Esel, Hund, Katze, Hahn = 4.'},{t:'tf',q:'Die Tiere machen Musik.',a:true,why:'Sie singen laut.'},{t:'mc',q:'Wer läuft weg?',o:['die Räuber','die Tiere','der Hahn'],a:0,why:'die Räuber = perampok.'},{t:'tf',q:'Die Tiere sind jung.',a:false,why:'Sie sind alt.'}]}],
+A2:[
+{t:'Der Fischer und seine Frau',e:'🌊',src:'nach den Brüdern Grimm',x:['Ein armer Fischer fängt einen großen Fisch. Der Fisch spricht: „Ich bin ein verzauberter Prinz. Bitte lass mich frei!“','Der Fischer lässt ihn gehen. Zu Hause erzählt er alles seiner Frau.','Die Frau sagt: „Du musst dir etwas wünschen! Ich möchte ein schönes Haus.“','Der Fisch erfüllt jeden Wunsch, aber die Frau wird immer gieriger. Am Ende will sie wie Gott sein.','Da sitzen die beiden wieder in ihrer kleinen Hütte am Meer.'],
+q:[{t:'tf',q:'Der Fisch ist ein verzauberter Prinz.',a:true,why:'verzaubert = terkena sihir.'},{t:'mc',q:'Was wünscht sich die Frau zuerst?',o:['ein Haus','ein Schloss','viel Geld'],a:0,why:'Zuerst möchte sie ein schönes Haus.'},{t:'mc',q:'Wie endet die Geschichte?',o:['Sie leben wieder in der kleinen Hütte.','Sie werden Könige.','Der Fischer wird reich.'],a:0,why:'Am Ende sitzen sie wieder in der Hütte.'},{t:'tf',q:'Die Frau ist am Ende zufrieden.',a:false,why:'Sie wird immer gieriger (serakah).'}]},
+{t:'Hänsel und Gretel',e:'🌲',src:'nach den Brüdern Grimm',x:['Hänsel und Gretel wohnen mit ihrem Vater und ihrer Stiefmutter am Wald. Die Familie ist sehr arm.','Die Stiefmutter bringt die Kinder tief in den Wald. Hänsel hat Brotstücke auf den Weg gestreut.','Leider haben die Vögel das Brot gefressen. Die Kinder finden den Weg nicht zurück.','Sie kommen zu einem Haus aus Brot und Kuchen. Dort wohnt eine böse Hexe.','Gretel schiebt die Hexe in den Ofen. Die Kinder nehmen das Gold und gehen nach Hause.'],
+q:[{t:'mc',q:'Warum finden die Kinder den Weg nicht?',o:['Die Vögel haben das Brot gefressen.','Es regnet.','Sie schlafen.'],a:0,why:'Die Vögel haben das Brot gefressen.'},{t:'tf',q:'Das Haus im Wald ist aus Holz.',a:false,why:'Es ist aus Brot und Kuchen.'},{t:'mc',q:'Wer wohnt in dem Haus?',o:['eine Hexe','ein Wolf','ein König'],a:0,why:'die Hexe = penyihir.'},{t:'tf',q:'Am Ende gehen die Kinder nach Hause.',a:true,why:'Sie gehen nach Hause.'}]},
+{t:'Rapunzel',e:'🗼',src:'nach den Brüdern Grimm',x:['Eine Hexe sperrt das Mädchen Rapunzel in einen hohen Turm. Der Turm hat keine Tür.','Wenn die Hexe kommt, ruft sie: „Rapunzel, lass dein Haar herunter!“','Eines Tages hört ein Prinz Rapunzels Lied. Er klettert an ihrem langen Haar nach oben.','Sie verlieben sich ineinander. Aber die Hexe merkt es und schneidet die Haare ab.','Am Ende finden sich Rapunzel und der Prinz wieder und leben glücklich.'],
+q:[{t:'tf',q:'Der Turm hat keine Tür.',a:true,why:'Richtig.'},{t:'mc',q:'Wie klettert der Prinz nach oben?',o:['am Haar','mit einer Leiter','mit einem Seil'],a:0,why:'Er klettert an ihrem Haar.'},{t:'mc',q:'Wer sperrt Rapunzel ein?',o:['eine Hexe','ein König','der Prinz'],a:0,why:'Eine Hexe.'},{t:'tf',q:'Die Hexe merkt nichts.',a:false,why:'Sie merkt es und schneidet die Haare ab.'}]},
+{t:'Aschenputtel',e:'🏰',src:'nach den Brüdern Grimm',x:['Aschenputtel lebt bei ihrer bösen Stiefmutter und zwei Stiefschwestern. Sie muss den ganzen Tag arbeiten.','Der König gibt ein großes Fest. Alle Mädchen sollen kommen, aber Aschenputtel darf nicht mitgehen.','Ein Vogel hilft ihr: Sie bekommt ein schönes Kleid und goldene Schuhe. So geht sie heimlich zum Fest.','Der Prinz tanzt nur mit ihr. Um Mitternacht läuft sie weg und verliert einen Schuh.','Der Prinz sucht das Mädchen, dem der Schuh passt. Er findet Aschenputtel und heiratet sie.'],
+q:[{t:'tf',q:'Aschenputtel verliert einen Schuh.',a:true,why:'Um Mitternacht verliert sie einen Schuh.'},{t:'mc',q:'Wann läuft sie weg?',o:['um Mitternacht','am Morgen','am Mittag'],a:0,why:'Mitternacht = tengah malam.'},{t:'mc',q:'Wem passt der Schuh?',o:['Aschenputtel','der Stiefmutter','den Stiefschwestern'],a:0,why:'Der Schuh passt Aschenputtel.'},{t:'tf',q:'Der Prinz tanzt mit vielen Mädchen.',a:false,why:'Er tanzt nur mit ihr.'}]}]};
+/* ===== APP ===== */
+let L=null,T=null,tab='w',Q=null,M=null,S=null,H=false,TI=0;
+let P={A1:0,A2:0};try{P=Object.assign(P,JSON.parse(localStorage.getItem('mq_p')||'{}'))}catch(x){}
+const saveP=()=>{try{localStorage.setItem('mq_p',JSON.stringify(P))}catch(x){}};
+const TM={tf:12,mc:15,hear:20,group:25,type:20};
+const e=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const ICO={
+Kennenlernen:'<rect x="3" y="6" width="26" height="18" rx="8" fill="#ff7a8a"/><path d="M9 24l-2 9 10-9z" fill="#ff7a8a"/><rect x="19" y="20" width="26" height="18" rx="8" fill="#6c8cff"/><path d="M39 38l2 7-9-7z" fill="#6c8cff"/><circle cx="11" cy="15" r="2" fill="#fff"/><circle cx="17" cy="15" r="2" fill="#fff"/><circle cx="25" cy="29" r="2" fill="#fff"/><circle cx="31" cy="29" r="2" fill="#fff"/><circle cx="37" cy="29" r="2" fill="#fff"/>',
+Familie:'<circle cx="14" cy="14" r="6" fill="#ffb347"/><rect x="6" y="22" width="16" height="18" rx="8" fill="#ff7a8a"/><circle cx="35" cy="17" r="6" fill="#ffb347"/><rect x="27" y="25" width="16" height="15" rx="7" fill="#6c8cff"/><circle cx="24" cy="27" r="4" fill="#ffb347"/><rect x="19" y="32" width="10" height="9" rx="5" fill="#4cc35a"/>',
+Zahlen:'<rect x="3" y="6" width="42" height="36" rx="9" fill="#a66cff"/><text x="24" y="32" font-size="19" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">123</text>',
+Uhrzeit:'<circle cx="24" cy="24" r="19" fill="#fff" stroke="#ff8a3d" stroke-width="5"/><path d="M24 12v13l8 5" stroke="#3b3355" stroke-width="3.5" stroke-linecap="round" fill="none"/>',
+Schule:'<path d="M3 20L24 5l21 15z" fill="#ff7a8a"/><rect x="8" y="20" width="32" height="21" fill="#ffd36b"/><rect x="20" y="29" width="8" height="12" fill="#8d5a2b"/><rect x="11" y="24" width="6" height="6" fill="#7fd6ff"/><rect x="31" y="24" width="6" height="6" fill="#7fd6ff"/>',
+Umwelt:'<rect x="21" y="28" width="6" height="15" fill="#8d5a2b"/><circle cx="24" cy="20" r="15" fill="#4cc35a"/><circle cx="17" cy="25" r="8" fill="#6edb6e"/><circle cx="30" cy="16" r="5" fill="#8ee07c"/>',
+Alltag:'<circle cx="37" cy="12" r="7" fill="#ffd93d"/><path d="M4 25L21 9l17 16z" fill="#ff7a8a"/><rect x="9" y="25" width="25" height="16" fill="#fff3c9"/><rect x="18" y="31" width="7" height="10" fill="#8d5a2b"/>',
+Farben:'<path d="M24 5C12 5 4 14 4 24s7 19 17 19c4 0 5-3 3-6s0-6 4-6h8c5 0 8-3 8-7C44 12 36 5 24 5z" fill="#ffd36b"/><circle cx="14" cy="22" r="3.5" fill="#ff5a6e"/><circle cx="22" cy="14" r="3.5" fill="#4aa8ff"/><circle cx="33" cy="16" r="3.5" fill="#34c759"/><circle cx="12" cy="32" r="3.5" fill="#a66cff"/>',
+Berufe:'<rect x="4" y="14" width="40" height="27" rx="6" fill="#8d5a2b"/><path d="M17 14v-4a3 3 0 013-3h8a3 3 0 013 3v4" fill="none" stroke="#5c3a1b" stroke-width="3"/><rect x="4" y="25" width="40" height="4" fill="#ffd36b"/>',
+Hobbys:'<circle cx="24" cy="24" r="19" fill="#fff" stroke="#3b3355" stroke-width="3"/><path d="M24 14l9 6-3 10H18l-3-10z" fill="#3b3355"/>',
+'Essen & Trinken':'<path d="M24 15c-8-6-19 0-17 12 2 10 10 16 17 12 7 4 15-2 17-12 2-12-9-18-17-12z" fill="#ff5a6e"/><path d="M24 15c0-5 2-8 6-10" stroke="#8d5a2b" stroke-width="3" fill="none"/><path d="M30 6c5 0 8 3 7 6-5 0-7-3-7-6z" fill="#4cc35a"/>',
+Wohnen:'<rect x="7" y="18" width="34" height="16" rx="6" fill="#6c8cff"/><rect x="3" y="22" width="10" height="16" rx="5" fill="#5578ee"/><rect x="35" y="22" width="10" height="16" rx="5" fill="#5578ee"/><rect x="11" y="34" width="4" height="7" fill="#8d5a2b"/><rect x="33" y="34" width="4" height="7" fill="#8d5a2b"/><circle cx="24" cy="9" r="5" fill="#ffd93d"/><rect x="23" y="12" width="2" height="6" fill="#8d5a2b"/>',
+'Körper & Gesundheit':'<path d="M24 42C8 30 4 21 8 14c4-6 12-5 16 1 4-6 12-7 16-1 4 7 0 16-16 28z" fill="#ff5a6e"/><rect x="21" y="16" width="6" height="17" rx="2" fill="#fff"/><rect x="15" y="22" width="18" height="6" rx="2" fill="#fff"/>',
+'Verkehr & Reisen':'<rect x="4" y="9" width="40" height="27" rx="8" fill="#ffd93d"/><rect x="8" y="14" width="13" height="10" rx="2" fill="#7fd6ff"/><rect x="25" y="14" width="15" height="10" rx="2" fill="#7fd6ff"/><circle cx="14" cy="38" r="5" fill="#3b3355"/><circle cx="34" cy="38" r="5" fill="#3b3355"/>',
+'Einkaufen & Kleidung':'<path d="M16 6L3 14l5 8 5-3v22h22V19l5 3 5-8-13-8c-1 4-4 6-8 6s-7-2-8-6z" fill="#ff7a8a"/>',
+'Wetter & Jahreszeiten':'<circle cx="18" cy="18" r="10" fill="#ffd93d"/><path d="M14 40a8 8 0 010-16 10 10 0 0119-3 8 8 0 012 19z" fill="#fff" stroke="#b9d8f0" stroke-width="2"/>',
+'Stadt & Orientierung':'<path d="M24 45S9 29 9 19a15 15 0 0130 0c0 10-15 26-15 26z" fill="#ff5a6e"/><circle cx="24" cy="19" r="6" fill="#fff"/>',
+map:'<path d="M3 10l13-4 16 4 13-4v32l-13 4-16-4-13 4z" fill="#ffe08a" stroke="#d9a65c" stroke-width="2"/><path d="M16 6v32M32 10v32" stroke="#d9a65c" stroke-width="2"/><path d="M21 19l6 6m0-6l-6 6" stroke="#ff5a6e" stroke-width="3" stroke-linecap="round"/>'};
+const ico=k=>`<svg viewBox="0 0 48 48" aria-hidden="true">${ICO[k]||ICO.map}</svg>`;
+const spk=t=>`<button class="sp" data-say="${e(t)}" aria-label="Audio">🔊</button>`;
+const CAT=`<svg viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg"><path d="M98 140c26-4 34-30 16-42" fill="none" stroke="#ff9f43" stroke-width="12" stroke-linecap="round"/><circle cx="113" cy="99" r="7" fill="#fff"/><rect x="34" y="100" width="22" height="34" rx="9" fill="#8d5a2b"/><ellipse cx="70" cy="124" rx="25" ry="23" fill="#ff9f43"/><ellipse cx="70" cy="128" rx="13" ry="15" fill="#fff"/><ellipse cx="54" cy="148" rx="13" ry="7" fill="#fff"/><ellipse cx="86" cy="148" rx="13" ry="7" fill="#fff"/><ellipse cx="46" cy="124" rx="7" ry="12" fill="#ff9f43" transform="rotate(15 46 124)"/><path d="M48 104q22 10 44 0l-2 10q-20 8-40 0z" fill="#e63946"/><rect x="82" y="108" width="9" height="16" rx="3" fill="#e63946"/><path d="M22 52Q14 8 54 24Q34 30 22 52z" fill="#ff9f43"/><path d="M118 52Q126 8 86 24Q106 30 118 52z" fill="#ff9f43"/><path d="M28 42Q26 22 44 28Q34 32 28 42z" fill="#ffb3c1"/><path d="M112 42Q114 22 96 28Q106 32 112 42z" fill="#ffb3c1"/><ellipse cx="70" cy="64" rx="52" ry="44" fill="#ff9f43"/><ellipse cx="70" cy="76" rx="32" ry="22" fill="#fff"/><path d="M62 42v8M70 40v10M78 42v8" stroke="#e57a1f" stroke-width="3.5" stroke-linecap="round"/><circle cx="34" cy="78" r="8" fill="#ff8fab" opacity=".75"/><circle cx="106" cy="78" r="8" fill="#ff8fab" opacity=".75"/><g class="ex0"><ellipse cx="50" cy="64" rx="8" ry="10" fill="#222"/><ellipse cx="90" cy="64" rx="8" ry="10" fill="#222"/><circle cx="53" cy="60" r="3.2" fill="#fff"/><circle cx="93" cy="60" r="3.2" fill="#fff"/><circle cx="48" cy="68" r="1.6" fill="#fff"/><circle cx="88" cy="68" r="1.6" fill="#fff"/></g><g class="ex1"><path d="M42 66q8-12 16 0M82 66q8-12 16 0" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round"/></g><g class="ex2"><ellipse cx="50" cy="66" rx="8" ry="9" fill="#222"/><ellipse cx="90" cy="66" rx="8" ry="9" fill="#222"/><circle cx="53" cy="62" r="3.2" fill="#fff"/><circle cx="93" cy="62" r="3.2" fill="#fff"/><path d="M40 54l16 4M100 54l-16 4" stroke="#7a3b1d" stroke-width="3" stroke-linecap="round"/><path d="M58 76q-3 6 0 9q3-3 0-9z" fill="#6ec6ff"/></g><path d="M66 74h8l-4 5z" fill="#ff6f91"/><g class="mo0"><path d="M60 82q5 6 10 0q5 6 10 0" fill="none" stroke="#7a3b1d" stroke-width="2.6" stroke-linecap="round"/></g><g class="mo1"><path d="M58 80q12 18 24 0z" fill="#d6336c"/><path d="M64 87q6 6 12 0q-6-3-12 0z" fill="#ff8fab"/></g><g class="mo2"><path d="M62 88q8-8 16 0" fill="none" stroke="#7a3b1d" stroke-width="2.6" stroke-linecap="round"/></g><path d="M30 72l-14-3M30 80l-14 4M110 72l14-3M110 80l14 4" stroke="#7a3b1d" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="70" cy="30" rx="36" ry="9" fill="#d9a65c"/><path d="M42 30Q42 4 70 4Q98 4 98 30z" fill="#ecc684"/><rect x="42" y="21" width="56" height="8" fill="#8d5a2b"/><path d="M96 24q8-16 20-10q-6 12-20 10z" fill="#4cc35a"/><ellipse class="arm" cx="96" cy="118" rx="7" ry="13" fill="#ff9f43"/></svg>`;
+/* ===== SUARA ===== */
+let AC=null,snd=true,started=false,bgTimer=null,bgStep=0,sTok=0,dk=0,VO=null,UQ=null;
+const MEL=[523,659,784,659,880,784,659,587,523,659,784,1047,880,784,659,0],BASS=[131,175,196,131];
+const FEM=/anna|petra|marlene|vicki|katja|hedda|helena|linda|sandy|shelley|google deutsch|female|weiblich/i,MALE=/markus|yannick|stefan|reed|hans|conrad|martin|jonas|jürgen|(^|[^a-z])male/i;
+function pickVoice(){try{const v=speechSynthesis.getVoices(),de=v.filter(x=>/^de/i.test(x.lang));let sv=null;try{sv=localStorage.getItem('mq_v')}catch(x){}VO=de.find(x=>x.name==sv)||de.map(x=>[x,(/^de[-_]DE/i.test(x.lang)?2:0)+(FEM.test(x.name)?3:0)-(MALE.test(x.name)?4:0)]).sort((a,b)=>b[1]-a[1]).map(a=>a[0])[0]||null;return v.length}catch(x){return 0}}
+pickVoice();try{speechSynthesis.onvoiceschanged=pickVoice}catch(x){}
+function ctx(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(x){}}if(AC&&AC.state=='suspended')AC.resume();return AC}
+function tone(f,t,d,ty,v){const c=AC,o=c.createOscillator(),g=c.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.05)}
+function bgStart(){if(!snd||bgTimer||!ctx())return;bgTimer=setInterval(()=>{const t=AC.currentTime+.03,m=MEL[bgStep%16];if(m)tone(m,t,.22,'triangle',.05);if(bgStep%4==0)tone(BASS[(bgStep>>2)%4],t,.9,'sine',.07);bgStep++},250)}
+function bgStop(){clearInterval(bgTimer);bgTimer=null}
+function duck(sec){bgStop();clearTimeout(dk);dk=setTimeout(()=>{if(snd&&started)bgStart()},sec*1000+150)}
+function sfx(k){if(!snd||!ctx())return;const t=AC.currentTime+.02;let L=1;
+if(k=='ok'){[523,659,784,1047].forEach((f,i)=>tone(f,t+i*.09,.35,'triangle',.18));tone(1319,t+.36,.6,'sine',.12);L=1.1}
+else if(k=='no'){[330,277,233,196].forEach((f,i)=>tone(f,t+i*.16,.3,'sawtooth',.07));L=.9}
+else if(k=='win'){[[523,0],[659,.12],[784,.24],[1047,.36],[784,.64],[1047,.76],[1319,.88]].forEach(([f,d],i)=>{tone(f,t+d,i>5?.9:.25,'triangle',.18);tone(f*2,t+d,i>5?.9:.25,'sine',.05)});[523,659,784].forEach(f=>tone(f,t+.88,1,'sine',.08));L=2}
+else{[392,370,349,294,262].forEach((f,i)=>tone(f,t+i*.28,.45,'sine',.12));L=1.8}
+duck(L)}
+function speak(t,u,cute){const k=++sTok;bgStop();clearTimeout(dk);
+if(AC&&AC.state=='running'){try{AC.suspend()}catch(x){}}
+const back=()=>{if(k!=sTok)return;if(AC&&snd){try{AC.resume()}catch(x){}}if(snd&&started)bgStart()};
+if(u){const a=new Audio(u);a.onended=back;a.onerror=back;a.play().catch(back);return}
+if(typeof speechSynthesis=='undefined'||typeof SpeechSynthesisUtterance=='undefined'){say('Browser ini tidak mendukung suara 😿',3500);back();return}
+if(!VO&&pickVoice()&&!VO)say('Suara Jerman belum terdeteksi 😿 Buka Tes suara',3500);
+const go=()=>{const m=new SpeechSynthesisUtterance(t);m.lang='de-DE';m.rate=cute?1.05:.9;m.pitch=cute?1.7:1.25;m.volume=1;if(VO)m.voice=VO;m.onend=back;m.onerror=back;UQ=m;speechSynthesis.speak(m);if(speechSynthesis.paused)speechSynthesis.resume();setTimeout(back,2500+t.length*140)};
+if(speechSynthesis.speaking||speechSynthesis.pending){speechSynthesis.cancel();setTimeout(go,150)}else go()}
+function setSnd(v){snd=v;document.getElementById('mt').textContent=v?'🎵':'🔇';if(v){started=true;bgStart()}else{bgStop();try{speechSynthesis.cancel()}catch(x){}}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)bgStop();else if(snd&&started)bgStart()});
+/* ===== MASKOT ===== */
+const PH=[['Hallooo! 👋','Hallo!'],['Los geht’s! 🚀','Los geht’s!'],['Viel Spaß! 🎉','Viel Spaß!'],['Miau! 🐱','Miau!'],['Du schaffst das! 💪','Du schaffst das!']];
+function say(t,ms){const b=document.getElementById('bub');if(!b)return;b.textContent=t;b.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>b.classList.remove('show'),ms||2200)}
+function anim(c,ms){const k=document.getElementById('cat');if(!k)return;k.className=c;setTimeout(()=>k.className='',ms)}
+function confetti(){const C=['#ff5a6e','#ffd93d','#34c759','#4aa8ff','#a66cff','#ff8a3d'];for(let i=0;i<46;i++){const d=document.createElement('i');d.className='cf';d.style.cssText=`left:${Math.random()*100}vw;background:${C[i%6]};animation-duration:${1.2+Math.random()*1.2}s;animation-delay:${Math.random()*.3}s;width:${6+Math.random()*6}px`;document.body.appendChild(d);setTimeout(()=>d.remove(),3000)}}
+const shuf=a=>[...a].sort(()=>Math.random()-.5);
+const pick=(a,n)=>shuf(a).slice(0,n);
+const bare=s=>s.replace(/^(der|die|das) /,'');
+const mk=(c,w)=>{const o=shuf([c,...w]);return{o,a:o.indexOf(c)}};
+function gen(T){const W=T.w,Q=[];
+W.forEach(w=>{const wr=pick(W.filter(x=>x!==w),2),f=Math.random()<.5;
+Q.push({t:'hear',say:w[0],q:'Welches Wort hörst du?',...mk(w[0],wr.map(x=>x[0])),why:w[0]+' = '+w[1]});
+Q.push(f?{t:'mc',img:w[2],q:'Was bedeutet „'+w[0]+'“?',...mk(w[1],wr.map(x=>x[1])),why:w[0]+' = '+w[1]}:{t:'mc',img:w[2],q:'Welches Wort passt?',...mk(w[0],wr.map(x=>x[0])),why:w[0]+' = '+w[1]});
+Q.push({t:'type',q:'Tulis dalam bahasa Jerman: „'+w[1]+'“ '+w[2],a:[w[0],bare(w[0])],why:w[1]+' = '+w[0]});
+[0,1].forEach(z=>Q.push({t:'tf',q:'„'+w[0]+'“ bedeutet „'+(z?w[1]:wr[0][1])+'“.',a:!!z,why:w[0]+' = '+w[1]}))});
+if(T.cats)for(let n=0;n<14;n++){const cs=pick([...T.cats.keys()],2),it=[];cs.forEach((c,k)=>pick(W.filter(w=>w[3]===c),2).forEach(w=>it.push([w[0],k])));Q.push({t:'group',q:'Ordne zu.',c:cs.map(c=>T.cats[c]),it:shuf(it),why:'Cek arti kata di tab Wortschatz.'})}
+const N=W.filter(w=>/^(der|die|das) /.test(w[0]));
+if(N.length>3)for(let n=0;n<8;n++)Q.push({t:'group',q:'Ordne den Artikel zu.',c:['der','die','das'],it:pick(N,4).map(w=>[bare(w[0]),['der','die','das'].indexOf(w[0].split(' ')[0])]),why:'Hafalkan kata benda bersama artikelnya.'});
+if(T.objs){const cl=Object.keys(T.objs);for(let n=0;n<12;n++){const cs=pick(cl,3),it=[];cs.forEach((c,k)=>pick(T.objs[c],k?1:2).forEach(o=>it.push([o,k])));Q.push({t:'group',q:'Welche Farbe hat das?',c:cs,it:shuf(it),why:'Contoh: die Banane ist gelb.'});
+const c=pick(cl,1)[0],o=pick(T.objs[c],1)[0],oc=cl.filter(x=>x!=c);
+Q.push({t:'mc',q:'Welche Farbe hat '+o+'?',...mk(c,pick(oc,2)),why:o+' ist '+c+'.'});
+const c2=Math.random()<.5?c:pick(oc,1)[0];Q.push({t:'tf',q:o+' ist '+c2+'.',a:c2==c,why:o+' ist '+c+'.'})}}
+return Q}
+function theme(){let c='';
+if(tab=='w')c=T.w.map(x=>`<div class="card w"><span class=em>${x[2]}</span><div><b>${x[0]}</b><small>${x[1]}</small></div>${spk(x[0])}</div>`).join('');
+if(tab=='r')c='<h3>Redemittel</h3>'+T.r.map(x=>`<div class="card w"><div><b>${x[0]}</b><small>${x[1]}</small></div>${spk(x[0])}</div>`).join('')+'<h3>Dialog</h3>'+T.d.map(x=>`<div class="card w"><div><small>${x[0]}</small><b>${x[1]}</b></div>${spk(x[1])}</div>`).join('');
+if(tab=='g')c=`<div class=card><h3 style="margin-top:0">${T.g.h}</h3><p>${T.g.p}</p>${T.g.x.map(x=>`<div class=ex>${x}</div>`).join('')}</div>`;
+if(tab=='q')c='<p class=sub>Pilih jenis latihan (⏱️ ada batas waktu tiap soal):</p>'+[['all','🎯 Semua (10 acak)'],['hear','🎧 Hören'],['group','🧩 Gruppieren'],['qa','❓ Fragen beantworten'],['tf','✅ Richtig / Falsch']].map(f=>`<button class=o data-act=start data-f=${f[0]}>${f[1]}</button>`).join('');
+return `<button class=x data-act=home>← Zurück</button><h1>${T.emoji} ${T.title}</h1><div class=tabs>${[['w','Wortschatz'],['r','Redemittel'],['g','Grammatik'],['q','Quiz']].map(t=>`<button class="${tab==t[0]?'on':''}" data-act=tab data-v=${t[0]}>${t[1]}</button>`).join('')}</div>${c}`}
+function cover(){return `<div class=hero><div class=hc>${CAT}</div><h1>Willkommen bei Meine Quiz!</h1><p class=sub style="color:#3b3355">Auf geht’s! Dein Deutsch-Abenteuer beginnt hier. 🗺️</p></div><h3 class=c>Wähle dein Niveau</h3>`+['A1','A2'].map(v=>{const ts=DATA.filter(t=>t.lv==v);return `<button class="lvc ${v}" data-act=lv data-v=${v}><div class=isl>${ts.map((t,i)=>`<span class=ic style="--d:${(i*.2).toFixed(1)}s">${ico(t.title)}<small>${t.title}</small></span>`).join('')}</div><div class=lvt><b>${v}</b><span>${v=='A1'?'Anfänger':'Grundstufe'}</span><small>${ts.length} Themen + Lesen-Karte</small></div></button>`}).join('')+`<p class=c><button class=lnk data-act=help>🔊 Suara tidak keluar? Tes suara</button></p>`}
+function home(){const ts=DATA.map((t,i)=>[t,i]).filter(x=>x[0].lv==L),n=STORIES[L].length;return `<button class=x data-act=cover>← Niveau</button><h1>Deutsch ${L}</h1><p class=sub>Pilih tema, atau mulai petualangan membaca!</p><button class="map-card" data-act=map><span class=ic2>${ico('map')}</span><span><b>Lesen: Märchen-Karte</b><br><small>${n} dongeng · selesai ${Math.min(P[L],n)}/${n}</small></span></button><div class=grid>`+ts.map(([t,i],k)=>`<button class="tile c${k%6}" data-act=t data-i=${i}><span class=ic2>${ico(t.title)}</span><b>${t.title}</b><small>${t.w.length} Wörter</small></button>`).join('')+'</div>'}
+const isl=g=>`<path d="M-60 16q4 36 60 36t60-36z" fill="#b9814a"/><path d="M-60 16q4 20 60 20t60-20z" fill="#a06a38" opacity=".45"/><ellipse cy="16" rx="60" ry="26" fill="${g}"/>`;
+const tree=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s||1})"><path d="M-12 10l12-34 12 34z" fill="#2e9e55"/><path d="M-8-4l8-22 8 22z" fill="#3fbf6a"/><rect x="-1.5" y="10" width="3" height="8" fill="#8d5a2b"/></g>`;
+const hut=(x,y,c)=>`<g transform="translate(${x} ${y})"><rect x="-14" y="-6" width="28" height="22" fill="${c}"/><path d="M-18-6l18-16 18 16z" fill="#e5533d"/><rect x="-4" y="4" width="8" height="12" fill="#8d5a2b"/></g>`;
+const SCN={
+sea1:()=>isl('#5cc9f2')+'<path d="M-40 22q6-6 12 0t12 0M20 30q6-6 12 0t12 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/><path d="M0 24c-14-6-14-32 0-42c5-3 9 1 6 7c-4 10 4 20 0 35z" fill="#ff8fab"/><path d="M0-18c-13-7-18 6-9 13c4-8 11-6 9-13zM7-16c10-6 17 4 9 12c-2-6-9-6-9-12z" fill="#ffb3c7"/><path d="M-46 20a12 12 0 0124 0z" fill="#ffd6a5"/><path d="M-40 20v-9M-34 20v-11M-28 20v-9" stroke="#e8a36a" stroke-width="1.5"/><circle cx="26" cy="-6" r="4" fill="#fff" opacity=".85"/><circle cx="34" cy="-16" r="3" fill="#fff" opacity=".85"/>',
+forest1:()=>isl('#6fd67a')+tree(-38,4,1)+tree(-14,-4,.8)+tree(46,2,.9)+'<path d="M20 26l-9-24h18z" fill="#e63946"/><circle cx="20" cy="-2" r="6" fill="#ffd8b0"/><path d="M13-2a7 7 0 0114 0z" fill="#e63946"/><path d="M-4 26a6 6 0 0112 0z" fill="#ff5a6e"/><rect x="1" y="26" width="2.5" height="5" fill="#fff"/>',
+pond1:()=>isl('#8be07a')+'<ellipse cy="18" rx="38" ry="15" fill="#5cc6f2"/><ellipse cy="18" rx="38" ry="15" fill="none" stroke="#fff" stroke-width="2" opacity=".6"/><ellipse cx="-10" cy="20" rx="11" ry="5" fill="#2fae5e"/><ellipse cx="-10" cy="12" rx="9" ry="7" fill="#4cc35a"/><circle cx="-14" cy="6" r="3.5" fill="#fff"/><circle cx="-6" cy="6" r="3.5" fill="#fff"/><circle cx="-14" cy="6" r="1.5" fill="#222"/><circle cx="-6" cy="6" r="1.5" fill="#222"/><path d="M-17 2l3-8 4 5 4-5 3 8z" fill="#ffd93d"/><circle cx="20" cy="22" r="6" fill="#ffd93d"/><circle cx="18" cy="20" r="2" fill="#fff" opacity=".7"/><path d="M46 24v-28M51 24v-22" stroke="#2e9e55" stroke-width="3"/><ellipse cx="46" cy="-6" rx="3" ry="6" fill="#8d5a2b"/>',
+town1:()=>isl('#8ddb7a')+hut(-26,6,'#ffe08a')+hut(22,8,'#bfe6ff')+'<path d="M0-26v-18l12-3v15" stroke="#3b3355" stroke-width="2.5" fill="none"/><circle cx="-3" cy="-26" r="4" fill="#3b3355"/><circle cx="9" cy="-32" r="4" fill="#3b3355"/>',
+sea2:()=>isl('#5cc9f2')+'<path d="M-44 22q6-6 12 0t12 0M24 32q6-6 12 0t12 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/><path d="M-34 10q16-18 34 0q-18 18-34 0z" fill="#ff9f43"/><path d="M0 10l16-11v22z" fill="#ff7a3d"/><circle cx="-22" cy="7" r="3" fill="#fff"/><circle cx="-22" cy="7" r="1.5" fill="#222"/><rect x="28" y="2" width="22" height="16" fill="#d9a65c"/><path d="M24 2l15-15 15 15z" fill="#8d5a2b"/>',
+forest2:()=>isl('#6fd67a')+tree(-42,4,.9)+tree(-20,-4,.7)+'<g transform="translate(24 6)"><rect x="-17" y="-8" width="34" height="26" fill="#c27a3e"/><path d="M-22-8l22-20 22 20z" fill="#fff"/><path d="M-22-8l22-20 22 20" fill="none" stroke="#ff6fa5" stroke-width="3" stroke-dasharray="4 4"/><rect x="-4" y="4" width="8" height="14" fill="#6b3d1b"/><circle cx="-10" cy="-1" r="2.5" fill="#ff5a6e"/><circle cx="10" cy="-1" r="2.5" fill="#4aa8ff"/></g>',
+tower2:()=>isl('#9be37d')+tree(-40,6,.8)+'<rect x="-12" y="-42" width="24" height="58" fill="#c8b6ff"/><path d="M-17-42l17-20 17 20z" fill="#e5533d"/><rect x="-5" y="-30" width="10" height="12" rx="5" fill="#5b4a8a"/><path d="M5-24q18 12 8 42" stroke="#ffd93d" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M0-62v-10l10 4-10 4" fill="#ff5a6e"/>',
+castle2:()=>isl('#9be37d')+'<rect x="-26" y="-14" width="52" height="32" fill="#ffd6e7"/><rect x="-36" y="-30" width="16" height="48" fill="#ffb3d1"/><rect x="20" y="-30" width="16" height="48" fill="#ffb3d1"/><path d="M-40-30l12-18 12 18zM16-30l12-18 12 18z" fill="#a66cff"/><path d="M-9 18v-14a9 9 0 0118 0v14z" fill="#8d5a2b"/><path d="M40 30q2-14 10-12q2 6 12 6q-2 8-22 6z" fill="#bfeaff" stroke="#6ec6ff" stroke-width="1.5"/>'};
+const SK={A1:['sea1','forest1','pond1','town1'],A2:['sea2','forest2','tower2','castle2']},PS=[[110,470],[290,365],[110,255],[290,140]];
+const MAPBG='<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a6ecff"/><stop offset="1" stop-color="#3fb2e6"/></linearGradient><g id="cl"><ellipse rx="34" ry="12" fill="#fff" opacity=".92"/><ellipse cx="-14" cy="-8" rx="16" ry="12" fill="#fff" opacity=".92"/><ellipse cx="12" cy="-10" rx="18" ry="13" fill="#fff" opacity=".92"/></g></defs><rect width="400" height="560" fill="url(#sea)"/><g fill="#fff" opacity=".3"><circle cx="40" cy="520" r="70"/><circle cx="390" cy="30" r="80"/><circle cx="210" cy="300" r="100"/></g><path d="M20 200q8-8 16 0t16 0M345 470q8-8 16 0t16 0M170 540q8-8 16 0t16 0M250 250q8-8 16 0t16 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/><use href="#cl" x="80" y="60"/><use href="#cl" x="340" y="250"/><use href="#cl" x="50" y="360"/><path d="M130 100q6-8 12 0q6-8 12 0M300 70q5-7 10 0q5-7 10 0" stroke="#3b3355" fill="none" stroke-width="2" stroke-linecap="round"/><g transform="translate(46 60)"><circle r="24" fill="#fff" opacity=".9"/><path d="M0-20l6 20-6 20-6-20z" fill="#ff5a6e"/><path d="M-20 0l20-6 20 6-20 6z" fill="#3b3355" opacity=".55"/><circle r="3" fill="#fff"/></g><g transform="translate(205 520)"><path d="M-22 0h44l-8 12h-28z" fill="#ff7a8a"/><rect x="-1" y="-30" width="2.5" height="30" fill="#8d5a2b"/><path d="M3-28l16 20H3z" fill="#fff"/><path d="M-3-24l-12 16h12z" fill="#ffd93d"/></g><g transform="translate(352 365)"><ellipse cy="8" rx="24" ry="9" fill="#f3d9a4"/><rect x="-2" y="-24" width="4" height="30" fill="#8d5a2b"/><path d="M0-24q-18-6-22 6q12-6 22-6zM0-24q18-8 24 4q-14-6-24-4zM0-24q0-16 12-14q-8 4-12 14z" fill="#4cc35a"/></g>';
+function mapv(){const st=STORIES[M];let g='',b='';
+st.forEach((s,i)=>{const ok=i<=P[M],dn=i<P[M],cur=i==P[M],x=PS[i][0],y=PS[i][1];
+g+=`<g transform="translate(${x} ${y})">${SCN[SK[M][i]]()}${ok?'':'<ellipse cy="4" rx="72" ry="58" fill="#8a8aa0" opacity=".5"/>'}${cur?'<ellipse cy="14" rx="78" ry="50" fill="none" stroke="#ffd93d" stroke-width="5" stroke-dasharray="10 8" class="pulse"/>':''}<g transform="translate(-52 -34)"><circle r="13" fill="#ff8a3d" stroke="#fff" stroke-width="3"/><text y="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="sans-serif">${i+1}</text></g>${dn?'<g transform="translate(50 -34)"><circle r="13" fill="#34c759" stroke="#fff" stroke-width="3"/><path d="M-6 0l4 5 8-9" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>':''}${ok?'':'<g transform="translate(50 -34)"><rect x="-11" y="-3" width="22" height="18" rx="4" fill="#7a7396"/><path d="M-6-3v-5a6 6 0 0112 0v5" stroke="#7a7396" stroke-width="3.5" fill="none"/><circle cy="6" r="2.5" fill="#fff"/></g>'}</g>`;
+b+=`<button class="pin${ok?'':' off'}" style="left:${x/4}%;top:${y/5.6}%" data-act=story data-i=${i} ${ok?'':'disabled'}><span class=lbl><b>${s.t}</b><small>${dn?'Selesai':ok?'Mulai':'Terkunci'}</small></span></button>`});
+return `<button class=x data-act=home>← Zurück</button><h1>Märchen-Karte ${M}</h1><p class=sub>Ketuk pulau yang bercahaya. Selesaikan soalnya untuk membuka pulau berikutnya.</p><div class=wm><svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">${MAPBG}<path d="M110 470C210 470 220 395 290 365C360 335 160 320 110 255C70 205 230 200 290 140" fill="none" stroke="#fff" stroke-width="6" stroke-dasharray="1 13" stroke-linecap="round"/>${g}</svg>${b}</div>`}
+function storyv(){const s=STORIES[S.lv][S.i];return `<button class=x data-act=map>← Karte</button><div class=hc2><svg viewBox="-72 -70 144 128">${SCN[SK[S.lv][S.i]]()}</svg></div><h1 class=c>${s.t}</h1><p class="sub c">${s.src} (versi sederhana ${S.lv})</p><div class=card>${s.x.map(t=>`<p class=st><span>${t}</span>${spk(t)}</p>`).join('')}</div><button class=btn data-act=sq>Fragen starten ▶</button>`}
+function help(){pickVoice();let de=[];try{de=speechSynthesis.getVoices().filter(x=>/^de/i.test(x.lang))}catch(x){}return `<button class=x data-act=cover2>← Zurück</button><h1>🔊 Tes suara</h1><div class=card><p>Suara Jerman di perangkat ini: <b>${VO?'✅ '+e(VO.name):'❌ belum terdeteksi'}</b></p>${de.length>1?`<p>Pilih suara yang paling lembut:</p><select id=vs>${de.map(x=>`<option ${VO&&VO.name==x.name?'selected':''}>${e(x.name)}</option>`).join('')}</select><p></p>`:''}<button class=btn data-say="Guten Tag! Willkommen bei Meine Quiz.">Tes suara 🔊</button></div><div class=card><b>Kalau tidak ada suara:</b><ol><li>Naikkan volume media. Di iPhone matikan mode senyap (tombol di sisi).</li><li><b>Android:</b> Pengaturan → Bahasa → Output teks-ke-ucapan → Google → pasang data suara Jerman.</li><li><b>iPhone/iPad:</b> Pengaturan → Aksesibilitas → Konten Lisan → Suara → Jerman, lalu unduh (pilih suara perempuan seperti Anna atau Petra untuk hasil lebih lembut).</li><li>Buka lewat Chrome (Android) atau Safari (iPhone), bukan dari dalam aplikasi lain.</li><li>Nama menu bisa berbeda tiap HP. Di soal Hören, tombol "Tampilkan teks" menampilkan kalimatnya.</li></ol></div>`}
+const setDl=()=>{if(Q.nt)return;Q.dur=(TM[Q.l[Q.i].t]||15)*1000;Q.dl=Date.now()+Q.dur};
+function tick(){if(!Q||Q.end||Q.chk||Q.nt){clearInterval(TI);TI=0;return}const l=Q.dl-Date.now(),b=document.getElementById('tmb');if(b){b.style.width=Math.max(0,l/Q.dur*100)+'%';b.className=l<5000?'lo':''}if(l<=0)check(true)}
+function render(s){document.getElementById('app').innerHTML=Q?quiz():H?help():S?storyv():M?mapv():T?theme():L?home():cover();if(Q&&!Q.end&&!Q.chk&&!Q.nt&&!TI)TI=setInterval(tick,200);if(s)scrollTo(0,0)}
+function start(f){const F={hear:['hear'],group:['group'],qa:['mc','type'],tf:['tf']}[f];Q={f,l:shuf(T.quiz.concat(T.auto?gen(T):[]).filter(q=>!F||F.includes(q.t))).slice(0,10),i:0,h:5,ok:0,sel:null,g:{},v:'',chk:false,res:null,to:false,tr:false,end:false,nt:0,st:null};setDl();render(1)}
+function startStory(){const s=STORIES[S.lv][S.i];Q={f:'story',l:s.q,i:0,h:5,ok:0,sel:null,g:{},v:'',chk:false,res:null,to:false,tr:false,end:false,nt:1,st:S};render(1)}
+function quiz(){
+if(Q.end){const r=Q.ok/Q.l.length,s=Q.h<=0?0:r>=.85?3:r>=.6?2:1,ok=Q.h>0&&r>=.6,y=Q.st;return `<div class=big>${Q.h<=0?'😿':'🏆'}</div><h1 class=c>${Q.h<=0?'Hati habis!':'Fertig!'}</h1><p class="sub c">Benar ${Q.ok} dari ${Q.l.length} · ${'⭐'.repeat(s)||'–'}</p>`+(y?`<p class="sub c">${ok?(y.i+1>=STORIES[y.lv].length?'🎉 Petualangan selesai!':'🔓 Lokasi berikutnya terbuka!'):'Butuh minimal 60% benar untuk lanjut. Coba lagi!'}</p><button class=btn data-act=map>Zur Karte 🗺️</button><p></p><button class=btn data-act=sq>Nochmal</button>`:`<button class=btn data-act=start data-f=${Q.f}>Nochmal</button><p></p><button class=btn data-act=back>Zurück</button>`)}
+const q=Q.l[Q.i];let b=`<div class=top><button class=x data-act=back aria-label="Keluar">✕</button><div class=bar><i style="width:${Q.i/Q.l.length*100}%"></i></div><b>❤️ ${Q.h}</b></div>`,ready=true,ans='';
+if(!Q.nt&&!Q.chk)b+=`<div class=tm><i id=tmb style="width:${Math.max(0,(Q.dl-Date.now())/Q.dur*100)}%"></i></div>`;
+if(q.img)b+=`<div class=big>${q.img}</div>`;
+if(q.t=='hear')b+=`<p class=c><button class=sp style="width:96px;height:96px;font-size:44px;margin:0" data-say="${e(q.say)}" data-url="${e(q.audio||'')}" aria-label="Audio">🔊</button><br><button class=lnk data-act=tr>👁️ Tampilkan teks</button></p>${Q.tr?'<p class=trn>'+q.say+'</p>':''}`;
+b+=`<h2>${q.q}</h2>`;
+if(q.t=='group'){ready=Object.keys(Q.g).length==q.it.length;ans=q.it.map(x=>x[0]+' → '+q.c[x[1]]).join(', ');
+b+=q.it.map((x,j)=>`<div class=gr><b>${x[0]}</b>${q.c.map((c,k)=>`<button class="${Q.chk?(k==x[1]?'ok':Q.g[j]===k?'no':''):(Q.g[j]===k?'on':'')}" data-act=cat data-j=${j} data-k=${k}>${c}</button>`).join('')}</div>`).join('')}
+else if(q.t=='type'){ready=Q.v.trim()!='';ans=q.a[0];b+=`<input id=in autocomplete=off autocapitalize=off value="${e(Q.v)}" ${Q.chk?'disabled':''} placeholder="Ketik jawabanmu…">`}
+else{const o=q.t=='tf'?['Richtig ✅','Falsch ❌']:q.o,a=q.t=='tf'?(q.a?0:1):q.a;ready=Q.sel!==null;ans=o[a];
+b+=o.map((x,j)=>`<button class="o ${Q.chk?(j==a?'ok':j==Q.sel?'no':''):(Q.sel===j?'on':'')}" data-act=pick data-j=${j}>${x}</button>`).join('')}
+if(!Q.chk)b+=`<button id=ck class=btn style="margin-top:16px" data-act=check ${ready?'':'disabled'}>Check</button>`;
+else b+=`<div class="fb ${Q.res?'ok':'no'}"><b>${Q.res?'Richtig! 🎉':Q.to?'Waktu habis! ⏰':'Leider falsch.'}</b><br>${Q.res?'':'Jawaban: <b>'+ans+'</b><br>'}${q.why}</div><button class=btn style="margin-top:12px" data-act=next>Weiter</button>`;
+return b}
+function check(to){const q=Q.l[Q.i];let r=false;clearInterval(TI);TI=0;
+if(!to){if(q.t=='group')r=q.it.every((x,j)=>Q.g[j]===x[1]);
+else if(q.t=='type'){const n=s=>s.toLowerCase().replace(/[.!?,]/g,'').trim();r=q.a.some(a=>n(a)==n(Q.v))}
+else r=Q.sel===(q.t=='tf'?(q.a?0:1):q.a)}
+Q.chk=true;Q.to=!!to;Q.res=r;if(r)Q.ok++;else Q.h--;sfx(r?'ok':'no');
+if(r){confetti();anim('jump happy',1600);say(pick(['Super! 🎉','Toll! ⭐','Prima! 👏','Richtig! 😺'],1)[0])}else{anim('shake sad',900);say(to?'Zeit ist um! ⏰':'Nicht schlimm! 💪')}
+render()}
+function next(){if(Q.h<=0||Q.i+1>=Q.l.length){Q.end=true;const ps=Q.h>0&&Q.ok/Q.l.length>=.6;if(Q.st&&ps){P[Q.st.lv]=Math.max(P[Q.st.lv],Q.st.i+1);saveP()}sfx(Q.h<=0?'lose':'win');if(Q.h>0){confetti();anim('jump happy',1800);say('Geschafft! 🏆')}}else{Q.i++;Q.sel=null;Q.g={};Q.v='';Q.chk=false;Q.res=null;Q.to=false;Q.tr=false;setDl()}render(1)}
+document.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;if(b.id=='mt'){setSnd(!snd);return}if(!started&&snd){started=true;bgStart()}const d=b.dataset,a=d.act;
+if(d.say){speak(d.say,d.url);return}
+if(a=='lv'){L=d.v;render(1)}
+else if(a=='cover'){L=T=M=S=null;H=false;render(1)}
+else if(a=='help'){H=true;render(1)}
+else if(a=='cover2'){H=false;render(1)}
+else if(a=='t'){T=DATA[+d.i];tab='w';render(1)}
+else if(a=='home'){T=M=S=null;render(1)}
+else if(a=='map'){M=L;S=null;Q=null;render(1)}
+else if(a=='story'){S={lv:M,i:+d.i};render(1)}
+else if(a=='sq')startStory()
+else if(a=='tab'){tab=d.v;render()}
+else if(a=='start')start(d.f)
+else if(a=='back'){clearInterval(TI);TI=0;Q=null;render(1)}
+else if(a=='tr'){Q.tr=!Q.tr;render()}
+else if(a=='pick'&&!Q.chk){Q.sel=+d.j;render()}
+else if(a=='cat'&&!Q.chk){Q.g[d.j]=+d.k;render()}
+else if(a=='check')check()
+else if(a=='next')next()});
+document.addEventListener('input',ev=>{if(ev.target.id=='in'){Q.v=ev.target.value;document.getElementById('ck').disabled=!Q.v.trim()}});
+document.addEventListener('change',ev=>{if(ev.target.id=='vs'){try{localStorage.setItem('mq_v',ev.target.value)}catch(x){}pickVoice();speak('Guten Tag! Das ist eine weiche Stimme.')}});
+document.addEventListener('keydown',ev=>{if(ev.key=='Enter'&&ev.target.id=='in'&&Q&&Q.v.trim()&&!Q.chk)check()});
+document.body.insertAdjacentHTML('beforeend',`<button id="mt" aria-label="Musik an/aus">🎵</button><div id="cat" role="button" aria-label="Maskot"><div id="bub"></div>${CAT}</div>`);
+document.getElementById('cat').onclick=()=>{const p=pick(PH,1)[0];say(p[0],2600);anim('jump happy',1600);speak(p[1],null,1)};
+render();
+</script></body></html>
